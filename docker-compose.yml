@@ -1,0 +1,92 @@
+services:
+  wordpress:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    env_file: .env
+    volumes:
+      - ./.srv/wordpress:/var/www/html
+      - ./themes/:/var/www/html/wp-content/themes/
+      - ./plugins/:/var/www/html/wp-content/plugins/
+      - ./mu-plugins/:/var/www/html/wp-content/mu-plugins/
+      - ./.srv/custom.ini:/usr/local/etc/php/conf.d/custom.ini
+    environment:
+      WORDPRESS_DB_HOST: "${WORDPRESS_DB_HOST}"
+      WORDPRESS_DB_USER: "${WORDPRESS_DB_USER}"
+      WORDPRESS_DB_PASSWORD: "${WORDPRESS_DB_PASSWORD}"
+      WORDPRESS_DB_NAME: "${WORDPRESS_DB_NAME}"
+    depends_on:
+      - db
+    networks:
+      - wpnet
+
+  nginx:
+    container_name: ${CONTAINER_NAME}-nginx
+    image: nginx:latest
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./.srv/wordpress:/var/www/html
+      - ./.docker/nginx.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - wordpress
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.playstore.rule=Host(`playstore.localhost`)"
+      - "traefik.http.routers.playstore.entrypoints=websecure"
+      - "traefik.http.routers.playstore.tls.certresolver=letsencrypt"
+      - "traefik.docker.network=proxy"
+    networks:
+      - wpnet
+      - proxy
+
+  db:
+    container_name: ${CONTAINER_NAME}-db
+    image: mysql:8.0.37
+    restart: always
+    env_file: .env
+    environment:
+      MYSQL_ROOT_PASSWORD: "${ROOT_PASSWORD}"
+      MYSQL_DATABASE: "${WORDPRESS_DB_NAME}"
+      MYSQL_USER: "${WORDPRESS_DB_USER}"
+      MYSQL_PASSWORD: "${WORDPRESS_DB_PASSWORD}"
+    volumes:
+      - ./db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - wpnet
+
+  phpmyadmin:
+    container_name: ${CONTAINER_NAME}-phpmyadmin
+    image: phpmyadmin/phpmyadmin
+    restart: unless-stopped
+    environment:
+      PMA_HOST: db
+      PMA_USER: "${WORDPRESS_DB_USER}"
+      PMA_PASSWORD: "${WORDPRESS_DB_PASSWORD}"
+      UPLOAD_LIMIT: 300M
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=proxy"
+      - "traefik.http.routers.pma.rule=Host(`pma.localhost`)"
+      - "traefik.http.routers.pma.entrypoints=websecure"
+      - "traefik.http.routers.pma.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.pma.middlewares=user-auth@file"
+    depends_on:
+      - db
+    networks:
+      - proxy
+      - wpnet
+
+volumes:
+  db_data:
+
+networks:
+  wpnet:
+  proxy:
+    external: true

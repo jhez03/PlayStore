@@ -1,0 +1,18 @@
+/.env
+/.srv/*
+!/.srv/custom.ini
+/db_data/
+/plugins/akismet
+/plugins/hello.php
+/themes/twentytwentyfive
+/themes/twentytwentyfour
+/themes/twentytwentythree
+
+# Ignore coding standard related files
+/.phpcs.xml
+/.phpcs.xml.dist
+/vendor/
+# Ignore Composer files
+/composer.lock
+composer.json
+
