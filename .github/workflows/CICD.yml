@@ -1,0 +1,100 @@
+name: WordPress CI/CD Deploy
+
+on:
+  push:
+    branches:
+      - dev
+  release:
+    types: [published]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    env:
+      DEPLOY_PATH: ${{ github.event_name == 'push' && '/var/www/playstore/dev/html' || '/var/www/playstore/prod/html' }}
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Ensure zip/unzip installed
+        run: sudo apt-get update && sudo apt-get install -y zip unzip
+
+      - name: Prepare WordPress Zip
+        run: |
+          WP_LINK=$(cat wp-version-control.cfg)
+          wget -O "./wordpress.zip" $WP_LINK
+
+      - name: Prepare plugins and theme zip
+        run: zip -r wpcontent.zip plugins mu-plugins themes
+
+      - name: Copy Zips to Server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: |
+            ./wordpress.zip
+            ./wpcontent.zip
+          target: ${{ env.DEPLOY_PATH }}
+
+      - name: Enable Maintenance Mode
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            echo "<?php \$upgrading = time(); ?>" > $DEPLOY_PATH/.maintenance
+
+      - name: Update WordPress Core
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            # Remove all PHP files except wp-config.php
+            find $DEPLOY_PATH -type f -name "*.php" ! -name "wp-config.php" -delete
+            # Remove wp-includes
+            rm -rf $DEPLOY_PATH/wp-includes
+            # Unzip new WordPress core
+            unzip -o $DEPLOY_PATH/wordpress.zip -d $DEPLOY_PATH
+            # Remove wordpress.zip
+            rm -f $DEPLOY_PATH/wordpress.zip
+
+      - name: Update Plugins and Theme
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            # Remove old content
+            rm -rf $DEPLOY_PATH/wp-content/plugins
+            rm -rf $DEPLOY_PATH/wp-content/themes
+            rm -rf $DEPLOY_PATH/wp-content/mu-plugins
+            # Unzip new plugins and themes
+            unzip -o $DEPLOY_PATH/wpcontent.zip -d $DEPLOY_PATH/wp-content
+            # Remove wpcontent.zip
+            rm -f $DEPLOY_PATH/wpcontent.zip
+
+      - name: Disable Maintenance Mode and Cleanup
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            rm -f $DEPLOY_PATH/.maintenance
