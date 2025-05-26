@@ -93,13 +93,13 @@ jobs:
               DEPLOY_PATH="/var/www/playstore/prod/html"
             fi
             # Remove old content
-            rm -rf $DEPLOY_PATH/wp-content/plugins
-            rm -rf $DEPLOY_PATH/wp-content/themes
-            rm -rf $DEPLOY_PATH/wp-content/mu-plugins
+            rm -rf "$DEPLOY_PATH/wp-content/plugins"
+            rm -rf "$DEPLOY_PATH/wp-content/themes"
+            rm -rf "$DEPLOY_PATH/wp-content/mu-plugins"
             # Unzip new plugins and themes
-            unzip -o $DEPLOY_PATH/wpcontent.zip -d $DEPLOY_PATH/wp-content
+            unzip -o "$DEPLOY_PATH/wpcontent.zip" -d "$DEPLOY_PATH/wp-content"
             # Remove wpcontent.zip
-            rm -f $DEPLOY_PATH/wpcontent.zip
+            rm -f "$DEPLOY_PATH/wpcontent.zip"
 
       - name: Disable Maintenance Mode and Cleanup
         uses: appleboy/ssh-action@v1.0.3
@@ -115,4 +115,6 @@ jobs:
             else
               DEPLOY_PATH="/var/www/playstore/prod/html"
             fi
-            rm -f $DEPLOY_PATH/.maintenance
+            rm -f "$DEPLOY_PATH/.maintenance"
+            rm -f "$DEPLOY_PATH/wordpress.zip"
+            rm -f "$DEPLOY_PATH/wpcontent.zip"
