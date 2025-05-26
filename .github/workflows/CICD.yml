@@ -75,7 +75,7 @@ jobs:
             rm -rf "$DEPLOY_PATH/wp-includes"
             # Unzip new WordPress core
             unzip -o "$DEPLOY_PATH/wordpress.zip" -d "$DEPLOY_PATH"
-            mv "$DEPLOY_PATH/wordpress/"* "$DEPLOY_PATH"
+            mv -f "$DEPLOY_PATH/wordpress/"* "$DEPLOY_PATH"
             rm -rf "$DEPLOY_PATH/wordpress"
 
       - name: Update Plugins and Theme
