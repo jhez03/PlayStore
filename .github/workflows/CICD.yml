@@ -49,7 +49,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             set -e
-            echo "<?php \$upgrading = time(); ?>" > $DEPLOY_PATH/.maintenance
+            echo "<?php \$upgrading = time(); ?>" >"/var/www/playstore/dev/html/.maintenance"
 
       - name: Update WordPress Core
         uses: appleboy/ssh-action@v1.0.3
