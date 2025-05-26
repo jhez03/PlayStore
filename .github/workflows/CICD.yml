@@ -1,3 +1,4 @@
+---
 name: WordPress CI/CD Deploy
 
 on:
@@ -10,9 +11,6 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
-    env:
-      DEPLOY_PATH: ${{ github.event_name == 'push' && '/var/www/playstore/dev/html' || '/var/www/playstore/prod/html' }}
 
     steps:
       - name: Checkout Code
@@ -32,7 +30,8 @@ jobs:
       - name: List workspace contents before SCP
         run: ls -lhA
 
-      - name: Copy Zips to Server
+      - name: Copy Zips to Server (Dev)
+        if: github.event_name == 'push'
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -42,10 +41,24 @@ jobs:
           source: |
             ./wordpress.zip
             ./wpcontent.zip
-          target: ${{ env.DEPLOY_PATH }}
+          target: /var/www/playstore/dev/html
 
-      - name: Enable Maintenance Mode
+      - name: Copy Zips to Server (Prod)
+        if: github.event_name == 'release'
         uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          source: |
+            ./wordpress.zip
+            ./wpcontent.zip
+          target: /var/www/playstore/prod/html
+
+      - name: Enable Maintenance Mode (Dev)
+        if: github.event_name == 'push'
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
@@ -53,9 +66,22 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             set -e
-            echo "<?php \$upgrading = time(); ?>" > $DEPLOY_PATH/.maintenance
+            echo "<?php \$upgrading = time(); ?>" > /var/www/playstore/dev/html/.maintenance
 
-      - name: Update WordPress Core
+      - name: Enable Maintenance Mode (Prod)
+        if: github.event_name == 'release'
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            echo "<?php \$upgrading = time(); ?>" > /var/www/playstore/prod/html/.maintenance
+
+      - name: Update WordPress Core (Dev)
+        if: github.event_name == 'push'
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -65,15 +91,35 @@ jobs:
           script: |
             set -e
             # Remove all PHP files except wp-config.php
-            find $DEPLOY_PATH -type f -name "*.php" ! -name "wp-config.php" -delete
+            find /var/www/playstore/dev/html -type f -name "*.php" ! -name "wp-config.php" -delete
             # Remove wp-includes
-            rm -rf $DEPLOY_PATH/wp-includes
+            rm -rf /var/www/playstore/dev/html/wp-includes
             # Unzip new WordPress core
-            unzip -o $DEPLOY_PATH/wordpress.zip -d $DEPLOY_PATH
+            unzip -o /var/www/playstore/dev/html/wordpress.zip -d /var/www/playstore/dev/html
             # Remove wordpress.zip
-            rm -f $DEPLOY_PATH/wordpress.zip
+            rm -f /var/www/playstore/dev/html/wordpress.zip
 
-      - name: Update Plugins and Theme
+      - name: Update WordPress Core (Prod)
+        if: github.event_name == 'release'
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            # Remove all PHP files except wp-config.php
+            find /var/www/playstore/prod/html -type f -name "*.php" ! -name "wp-config.php" -delete
+            # Remove wp-includes
+            rm -rf /var/www/playstore/prod/html/wp-includes
+            # Unzip new WordPress core
+            unzip -o /var/www/playstore/prod/html/wordpress.zip -d /var/www/playstore/prod/html
+            # Remove wordpress.zip
+            rm -f /var/www/playstore/prod/html/wordpress.zip
+
+      - name: Update Plugins and Theme (Dev)
+        if: github.event_name == 'push'
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -83,15 +129,16 @@ jobs:
           script: |
             set -e
             # Remove old content
-            rm -rf $DEPLOY_PATH/wp-content/plugins
-            rm -rf $DEPLOY_PATH/wp-content/themes
-            rm -rf $DEPLOY_PATH/wp-content/mu-plugins
+            rm -rf /var/www/playstore/dev/html/wp-content/plugins
+            rm -rf /var/www/playstore/dev/html/wp-content/themes
+            rm -rf /var/www/playstore/dev/html/wp-content/mu-plugins
             # Unzip new plugins and themes
-            unzip -o $DEPLOY_PATH/wpcontent.zip -d $DEPLOY_PATH/wp-content
+            unzip -o /var/www/playstore/dev/html/wpcontent.zip -d /var/www/playstore/dev/html/wp-content
             # Remove wpcontent.zip
-            rm -f $DEPLOY_PATH/wpcontent.zip
+            rm -f /var/www/playstore/dev/html/wpcontent.zip
 
-      - name: Disable Maintenance Mode and Cleanup
+      - name: Update Plugins and Theme (Prod)
+        if: github.event_name == 'release'
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.SSH_HOST }}
@@ -100,4 +147,35 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           script: |
             set -e
-            rm -f $DEPLOY_PATH/.maintenance
+            # Remove old content
+            rm -rf /var/www/playstore/prod/html/wp-content/plugins
+            rm -rf /var/www/playstore/prod/html/wp-content/themes
+            rm -rf /var/www/playstore/prod/html/wp-content/mu-plugins
+            # Unzip new plugins and themes
+            unzip -o /var/www/playstore/prod/html/wpcontent.zip -d /var/www/playstore/prod/html/wp-content
+            # Remove wpcontent.zip
+            rm -f /var/www/playstore/prod/html/wpcontent.zip
+
+      - name: Disable Maintenance Mode and Cleanup (Dev)
+        if: github.event_name == 'push'
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            rm -f /var/www/playstore/dev/html/.maintenance
+
+      - name: Disable Maintenance Mode and Cleanup (Prod)
+        if: github.event_name == 'release'
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: ${{ secrets.SSH_PORT }}
+          script: |
+            set -e
+            rm -f /var/www/playstore/prod/html/.maintenance
