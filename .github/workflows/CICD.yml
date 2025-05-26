@@ -28,7 +28,7 @@ jobs:
           wget -O "./wordpress.zip" $WP_LINK
 
       - name: Prepare plugins and theme zip
-        run: zip -rf wpcontent.zip plugins mu-plugins themes
+        run: zip -r wpcontent.zip plugins mu-plugins themes
 
       - name: Copy Zips to Server
         uses: appleboy/scp-action@master
