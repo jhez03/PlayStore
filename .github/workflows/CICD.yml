@@ -73,9 +73,10 @@ jobs:
             find "$DEPLOY_PATH" -type f -name "*.php" ! -name "wp-config.php" -delete
             rm -rf "$DEPLOY_PATH/wp-admin"
             rm -rf "$DEPLOY_PATH/wp-includes"
+            rm -rf "$DEPLOY_PATH/wp-content"
             # Unzip new WordPress core
             unzip -o "$DEPLOY_PATH/wordpress.zip" -d "$DEPLOY_PATH"
-            mv -f "$DEPLOY_PATH/wordpress/"* "$DEPLOY_PATH"
+            mv "$DEPLOY_PATH/wordpress/"* "$DEPLOY_PATH"
             rm -rf "$DEPLOY_PATH/wordpress"
 
       - name: Update Plugins and Theme
