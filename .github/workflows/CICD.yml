@@ -25,7 +25,7 @@ jobs:
           wget -O "./wordpress.zip" $WP_LINK
 
       - name: Prepare plugins and theme zip
-        run: zip -r ../../wpcontent.zip html/wp-content/plugins html/wp-content/mu-plugins html/wp-content/themes
+        run: zip -r wpcontent.zip html/wp-content/plugins html/wp-content/mu-plugins html/wp-content/themes
 
       - name: Copy Zips to Server
         uses: appleboy/scp-action@master
@@ -95,9 +95,11 @@ jobs:
             rm -rf "$DEPLOY_PATH/wp-content/themes"
             rm -rf "$DEPLOY_PATH/wp-content/mu-plugins"
             # Unzip new plugins and themes
-            unzip -o "$DEPLOY_PATH/wpcontent.zip" -d "$DEPLOY_PATH/wp-content"
+            unzip -o "$DEPLOY_PATH/wpcontent.zip" -d "$DEPLOY_PATH"
+            mv "$DEPLOY_PATH/html/wp-content/"* "$DEPLOY_PATH/wp-content"
             # Remove wpcontent.zip
             rm -f "$DEPLOY_PATH/wpcontent.zip"
+            rm -rf "$DEPLOY_PATH/html/"
 
       - name: Disable Maintenance Mode and Cleanup
         uses: appleboy/ssh-action@v1.0.3
