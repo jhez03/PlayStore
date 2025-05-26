@@ -29,6 +29,9 @@ jobs:
       - name: Prepare plugins and theme zip
         run: zip -r wpcontent.zip plugins mu-plugins themes
 
+      - name: List workspace contents before SCP
+        run: ls -lhA
+
       - name: Copy Zips to Server
         uses: appleboy/scp-action@master
         with:
