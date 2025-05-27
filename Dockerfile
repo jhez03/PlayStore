@@ -1,4 +1,4 @@
-FROM wordpress:6.5.3-php8.1-fpm
+FROM wordpress:6.8.1-php8.2-fpm
 
 LABEL maintainer="Jeswin Libay"
 

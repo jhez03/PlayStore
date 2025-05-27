@@ -1,7 +1,6 @@
 /.env
 /.srv/*
-!/.srv/custom.ini
-/db_data/
+.phpaction.json
 /plugins/akismet
 /plugins/hello.php
 /themes/twentytwentyfive
@@ -12,6 +11,8 @@
 /.phpcs.xml
 /.phpcs.xml.dist
 /vendor/
+node_modules/
+
 # Ignore Composer files
 /composer.lock
 composer.json

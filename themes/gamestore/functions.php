@@ -15,12 +15,23 @@
  *
  * @return void
  */
-function gamestore_styles() {
+function playstore_styles() {
 	wp_enqueue_style(
-		'gamestore-style',
-		get_stylesheet_uri(),
-		[],
+		'playstore-general',
+		get_theme_file_uri( 'assets/css/gamestore.css' ),
+		array(),
 		wp_get_theme()->get( 'Version' )
 	);
+	wp_enqueue_script(
+		'playstore-theme-related',
+		get_theme_file_uri( 'assets/js/playstore-theme.js' ),
+		array(),
+		wp_get_theme()->get( 'Version' ),
+		true
+	);
+	wp_enqueue_style(
+		'playstore-google-fonts',
+		'//fonts.googleapis.com/css2?family=Urbanist:ital,wght@0,400;0,700;1,400;1,700'
+	);
 }
-add_action( 'wp_enqueue_scripts', 'gamestore_styles' );
+add_action( 'wp_enqueue_scripts', 'playstore_styles' );
