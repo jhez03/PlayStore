@@ -1,7 +1,6 @@
 /.env
 /.srv/*
 !/.srv/custom.ini
-/db_data/
 /plugins/akismet
 /plugins/hello.php
 /themes/twentytwentyfive
