@@ -1,6 +1,5 @@
 /.env
 /.srv/*
-!/.srv/custom.ini
 .phpaction.json
 /plugins/akismet
 /plugins/hello.php
