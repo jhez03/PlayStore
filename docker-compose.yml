@@ -11,7 +11,6 @@ services:
       - ./themes/:/var/www/html/wp-content/themes/
       - ./plugins/:/var/www/html/wp-content/plugins/
       - ./mu-plugins/:/var/www/html/wp-content/mu-plugins/
-      - ./html/custom.ini:/usr/local/etc/php/conf.d/custom.ini
     environment:
       WORDPRESS_DB_HOST: "${WORDPRESS_DB_HOST}"
       WORDPRESS_DB_USER: "${WORDPRESS_DB_USER}"
