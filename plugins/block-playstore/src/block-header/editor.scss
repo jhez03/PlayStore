@@ -1,0 +1,11 @@
+/**
+ * The following styles get applied inside the editor only.
+ *
+ * Replace them with your own styles or remove the file completely.
+ */
+
+.wp-block-create-block-block-header {
+	border: 1px dotted #f00;
+
+	--action-main: rgba(14, 13, 15, 0.64);
+}
