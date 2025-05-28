@@ -24,7 +24,7 @@ function playstore_styles() {
 	);
 	wp_enqueue_script(
 		'playstore-theme-related',
-		get_theme_file_uri( 'assets/js/playstore-theme.js' ),
+		get_theme_file_uri( 'assets/js/playstore-theme-related.js' ),
 		array(),
 		wp_get_theme()->get( 'Version' ),
 		true
