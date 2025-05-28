@@ -119,7 +119,7 @@ body {
 :root {
   --background-default: #fafafa;
   --action-main: rgba(14, 13, 15, 0.64);
-  --action-main-svg: rgb(14, 13, 15);
+  --action-main-svg: #0e0d0f;
   --divider-main: rgba(14, 13, 15, 0.08);
   --text-primary: #0e0d0f;
   --secondary-48: rgba(250, 250, 250, 0.48);
@@ -127,7 +127,7 @@ body {
   --purple-main: #6f76c0;
 }
 
-.dark-mode-gamestore {
+.dark-mode-playstore {
   --background-default: #0e0d0f;
   --action-main: rgba(255, 255, 255, 0.64);
   --action-main-svg: rgb(255, 255, 255);
