@@ -1,6 +1,28 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
+	'block-games-line' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'create-block/block-games-line',
+		'version' => '0.1.0',
+		'title' => 'Games Line',
+		'category' => 'playstore',
+		'icon' => 'smiley',
+		'description' => 'Dynamic animated line with games',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'textdomain' => 'block-playstore',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'render' => 'file:./render.php',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
+	),
 	'block-header' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
