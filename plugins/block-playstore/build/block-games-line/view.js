@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
-/*!**********************************!*\
-  !*** ./src/block-header/view.js ***!
-  \**********************************/
+/*!**************************************!*\
+  !*** ./src/block-games-line/view.js ***!
+  \**************************************/
 /**
  * Use this file for JavaScript code that you want to run in the front-end
  * on posts/pages that contain this block.
@@ -25,7 +25,7 @@
  */
 
 /* eslint-disable no-console */
-console.log("Hello World! (from create-block-block-playstore block)");
+console.log('Hello World! (from create-block-block-playstore block)');
 /* eslint-enable no-console */
 /******/ })()
 ;
