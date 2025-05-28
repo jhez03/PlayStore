@@ -18,6 +18,7 @@
 .wp-block-create-block-block-header .inner-header {
   padding: 0 32px;
   display: flex;
+  flex-direction: row;
   height: 100px;
   align-items: center;
   justify-content: space-between;
@@ -27,6 +28,7 @@
   align-items: center;
   justify-content: flex-end;
   gap: 12px;
+  white-space: nowrap;
 }
 .wp-block-create-block-block-header .inner-header .right-section .header-search, .wp-block-create-block-block-header .inner-header .right-section .header-mode-switcher {
   cursor: pointer;
@@ -144,6 +146,7 @@
     gap: 32px;
     color: var(--text-primary, #0E0D0F);
     position: static;
+    white-space: nowrap;
   }
   .wp-block-group .wp-block-navigation .wp-block-navigation-item, .wp-block-group .wp-block-navigation .wp-block-navigation-submenu, .wp-block-group .wp-block-navigation .wp-block-navigation__responsive-container, .wp-block-group .wp-block-navigation .wp-block-navigation__responsive-dialog {
     position: static;
@@ -178,72 +181,6 @@
   }
   .wp-block-group .wp-block-navigation .wp-block-navigation-item.open-on-click .wp-block-navigation-submenu__toggle + .wp-block-navigation__submenu-icon svg {
     display: none;
-  }
-}
-@media (min-width: 600px) {
-  .wp-block-group {
-    display: flex;
-    align-items: flex-end;
-    gap: 48px;
-  }
-  .wp-block-group .wp-block-navigation {
-    margin-top: 0;
-    position: static;
-  }
-  .wp-block-group .wp-block-navigation .wp-block-navigation__responsive-container {
-    position: static;
-  }
-  .wp-block-group .wp-block-navigation .wp-block-navigation__responsive-container .wp-block-navigation__responsive-dialog {
-    position: static;
-  }
-  .wp-block-group .wp-block-navigation .wp-block-navigation__container {
-    position: static;
-  }
-  .wp-block-group .wp-block-navigation .wp-block-navigation__container .wp-block-navigation-item {
-    position: static;
-    background: transparent;
-  }
-  .wp-block-group .wp-block-navigation .wp-block-navigation__container .wp-block-navigation-item.current-menu-item {
-    color: var(--purple-main);
-  }
-  .wp-block-group .wp-block-navigation .wp-block-navigation__container .wp-block-navigation-item.open-on-click .wp-block-navigation-submenu__toggle + .wp-block-navigation__submenu-icon {
-    position: relative;
-    width: 24px;
-    height: 24px;
-    margin-left: 6px;
-    display: block;
-    background: url("data:image/svg+xml,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M8.46997 10.7402L12 14.2602L15.53 10.7402\" stroke=\"%230E0D0F\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>");
-  }
-  .wp-block-group .wp-block-navigation .wp-block-navigation__container .wp-block-navigation-item.open-on-click .wp-block-navigation-submenu__toggle + .wp-block-navigation__submenu-icon svg {
-    display: none;
-  }
-  .wp-block-group .wp-block-navigation .wp-block-navigation__container .wp-block-navigation-item.open-on-click .wp-block-navigation-submenu__toggle {
-    padding-right: 0;
-  }
-  .wp-block-group .wp-block-navigation .wp-block-navigation__container .wp-block-navigation__submenu-container {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    right: 0;
-    width: 100%;
-    min-height: 52px;
-    background: var(--secondary-48, rgba(250, 250, 250, 0.48));
-    color: var(--white-contrast, #0A090A);
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 32px;
-    padding-left: 272px;
-  }
-  .wp-block-group .wp-block-navigation .wp-block-navigation__container .wp-block-navigation__submenu-container.has-primary-background-color {
-    background: var(--secondary-48, rgba(250, 250, 250, 0.48)) !important;
-  }
-  .wp-block-group .wp-block-navigation .wp-block-navigation__container .wp-block-navigation__submenu-container.has-contrast-color {
-    color: var(--white-contrast, #0A090A) !important;
-  }
-  .wp-block-group .wp-block-navigation .wp-block-navigation__container .wp-block-navigation__submenu-container .wp-block-navigation__submenu-container {
-    left: 0;
-    top: 100%;
   }
 }
 
