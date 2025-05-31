@@ -1,12 +1,12 @@
 {
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
-  "name": "create-block/block-games-line",
+  "name": "create-block/block-hero",
   "version": "0.1.0",
-  "title": "Games Line",
-  "category": "playstore",
+  "title": "Playstore Hero",
+  "category": "widgets",
   "icon": "smiley",
-  "description": "Dynamic animated line with games",
+  "description": "Block for displaying a hero section with a Playstore link.",
   "example": {},
   "supports": {
     "html": false
@@ -14,7 +14,6 @@
   "textdomain": "block-playstore",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
-  "render": "file:./render.php",
   "style": "file:./style-index.css",
   "viewScript": "file:./view.js"
 }

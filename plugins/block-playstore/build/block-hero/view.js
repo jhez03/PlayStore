@@ -1,7 +1,7 @@
 /******/ (() => { // webpackBootstrap
-/*!**************************************!*\
-  !*** ./src/block-navigation/view.js ***!
-  \**************************************/
+/*!********************************!*\
+  !*** ./src/block-hero/view.js ***!
+  \********************************/
 /**
  * Use this file for JavaScript code that you want to run in the front-end
  * on posts/pages that contain this block.

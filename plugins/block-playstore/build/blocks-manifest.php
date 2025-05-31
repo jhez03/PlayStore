@@ -1,28 +1,6 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
-	'block-games-line' => array(
-		'$schema' => 'https://schemas.wp.org/trunk/block.json',
-		'apiVersion' => 3,
-		'name' => 'create-block/block-games-line',
-		'version' => '0.1.0',
-		'title' => 'Games Line',
-		'category' => 'playstore',
-		'icon' => 'smiley',
-		'description' => 'Dynamic animated line with games',
-		'example' => array(
-			
-		),
-		'supports' => array(
-			'html' => false
-		),
-		'textdomain' => 'block-playstore',
-		'editorScript' => 'file:./index.js',
-		'editorStyle' => 'file:./index.css',
-		'render' => 'file:./render.php',
-		'style' => 'file:./style-index.css',
-		'viewScript' => 'file:./view.js'
-	),
 	'block-header' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
@@ -67,15 +45,15 @@ return array(
 		'style' => 'file:./style-index.css',
 		'viewScript' => 'file:./view.js'
 	),
-	'block-navigation' => array(
+	'block-hero' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
-		'name' => 'create-block/block-navigation',
+		'name' => 'create-block/block-hero',
 		'version' => '0.1.0',
-		'title' => 'Playstore Navigation',
-		'category' => 'playstore',
+		'title' => 'Playstore Hero',
+		'category' => 'widgets',
 		'icon' => 'smiley',
-		'description' => 'Dedicated navigation for Playstore',
+		'description' => 'Block for displaying a hero section with a Playstore link.',
 		'example' => array(
 			
 		),
@@ -85,7 +63,6 @@ return array(
 		'textdomain' => 'block-playstore',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
-		'render' => 'file:./render.php',
 		'style' => 'file:./style-index.css',
 		'viewScript' => 'file:./view.js'
 	),
