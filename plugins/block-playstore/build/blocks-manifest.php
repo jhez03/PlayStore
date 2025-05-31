@@ -36,7 +36,8 @@ return array(
 			
 		),
 		'supports' => array(
-			'html' => false
+			'html' => false,
+			'innerBlocks' => true
 		),
 		'attributes' => array(
 			'memberLink' => array(
@@ -44,11 +45,47 @@ return array(
 			),
 			'cartLink' => array(
 				'type' => 'string'
+			),
+			'logo' => array(
+				'type' => 'object'
+			),
+			'selectedMenu' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'menuItems' => array(
+				'type' => 'array',
+				'default' => array(
+					
+				)
 			)
 		),
 		'textdomain' => 'block-playstore',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
+		'render' => 'file:./render.php',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
+	),
+	'block-navigation' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'create-block/block-navigation',
+		'version' => '0.1.0',
+		'title' => 'Playstore Navigation',
+		'category' => 'playstore',
+		'icon' => 'smiley',
+		'description' => 'Dedicated navigation for Playstore',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'textdomain' => 'block-playstore',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'render' => 'file:./render.php',
 		'style' => 'file:./style-index.css',
 		'viewScript' => 'file:./view.js'
 	),

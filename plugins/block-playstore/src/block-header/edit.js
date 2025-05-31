@@ -1,17 +1,125 @@
 import {
 	useBlockProps,
-	InnerBlocks,
 	InspectorControls,
+	MediaUploadCheck,
+	MediaUpload,
 } from "@wordpress/block-editor";
-import { PanelBody, TextControl } from "@wordpress/components";
+import {
+	PanelBody,
+	TextControl,
+	Button,
+	SelectControl,
+} from "@wordpress/components";
 import "./editor.scss";
+import { useSelect } from "@wordpress/data";
+import { useEffect } from "@wordpress/element";
+
+function buildMenuTree(menuItems) {
+	const itemsById = {};
+	const tree = [];
+
+	menuItems.forEach((item) => {
+		itemsById[item.id] = { ...item, children: [] };
+	});
+	menuItems.forEach((item) => {
+		if (item.parent && itemsById[item.parent]) {
+			itemsById[item.parent].children.push(itemsById[item.id]);
+		} else {
+			tree.push(itemsById[item.id]);
+		}
+	});
+
+	return tree;
+}
+function renderMenuTree(items, level = 0) {
+	const ulClass = level === 0 ? "playstore-nav-links" : "sub-menu";
+	return (
+		<ul className={ulClass}>
+			{items.map((item) => {
+				const hasChildren = item.children && item.children.length > 0;
+				const liClass = hasChildren ? "menu-item-has-children" : "";
+				return (
+					<li key={item.id} className={liClass}>
+						<a href={item.url}>{item.title.rendered}</a>
+						{hasChildren && (
+							<>
+								<button className="dropdown-icon playstore-submenu-toggle">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										width="24"
+										height="25"
+										viewBox="0 0 24 25"
+										fill="var(--action-main-svg, rgb(14,13,15))"
+									>
+										<path
+											d="M8.46997 11.2402L12 14.7602L15.53 11.2402"
+											stroke="var(--action-main-svg, rgb(14,13,15))"
+											stroke-width="1.5"
+											stroke-linecap="round"
+											stroke-linejoin="round"
+										/>
+									</svg>
+								</button>
+								{renderMenuTree(item.children, level + 1)}
+							</>
+						)}
+					</li>
+				);
+			})}
+		</ul>
+	);
+}
 
 export default function Edit({ attributes, setAttributes }) {
 	const memberLink = attributes.memberLink || "";
 	const cartLink = attributes.cartLink || "";
+	const logo = attributes.logo || "";
+
+	// Fetch available menus from REST API
+	const menus = useSelect((select) => {
+		return select("core").getEntityRecords("taxonomy", "nav_menu");
+	}, []);
+
+	// Fetch menu items for the selected menu
+	const menuItems = useSelect(
+		(select) => {
+			if (!attributes.selectedMenu) return [];
+			return select("core").getEntityRecords("postType", "nav_menu_item", {
+				menus: [attributes.selectedMenu],
+				per_page: -1,
+			});
+		},
+		[attributes.selectedMenu],
+	);
+	// Update menuItems attribute when fetched
+	useEffect(() => {
+		if (menuItems) {
+			setAttributes({ menuItems });
+		}
+	}, [menuItems]);
+
+	// Build menu options for SelectControl
+	const menuOptions = menus
+		? menus.map((menu) => ({ label: menu.name, value: menu.id }))
+		: [];
+
+	// Build tree only if menuItems is loaded and not null
+	const tree =
+		menuItems && menuItems.length > 0 ? buildMenuTree(menuItems) : [];
+
 	return (
 		<>
 			<div {...useBlockProps()}>
+				<InspectorControls>
+					<PanelBody title="Menu Settings" initialOpen={true}>
+						<SelectControl
+							label="Select Menu"
+							value={attributes.selectedMenu}
+							options={[{ label: "Select a menu", value: "" }, ...menuOptions]}
+							onChange={(value) => setAttributes({ selectedMenu: value })}
+						/>
+					</PanelBody>
+				</InspectorControls>
 				<InspectorControls>
 					<PanelBody title="Block Settings">
 						<TextControl
@@ -26,9 +134,33 @@ export default function Edit({ attributes, setAttributes }) {
 						/>
 					</PanelBody>
 				</InspectorControls>
+				<MediaUploadCheck>
+					<MediaUpload
+						onSelect={(media) => setAttributes({ logo: media })}
+						allowedTypes={["image"]}
+						value={logo?.id}
+						render={({ open }) => (
+							<Button onClick={open} variant="secondary">
+								{logo ? "Change Logo" : "Upload Logo"}
+							</Button>
+						)}
+					/>
+				</MediaUploadCheck>
 				<div className="inner-header">
-					<InnerBlocks />
-					<div className="right-section">
+					<div className="nav-start">
+						{logo && <img src={logo.url} alt="Logo" className="header-logo" />}
+						<nav className="menu">
+							<div className="menu">
+								{tree.length > 0 ? (
+									renderMenuTree(tree)
+								) : (
+									<p>Select a menu to display navigation items.</p>
+								)}
+							</div>
+						</nav>
+					</div>
+
+					<div className="nav-end">
 						<div className="header-search">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
