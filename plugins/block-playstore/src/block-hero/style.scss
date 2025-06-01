@@ -1,0 +1,7 @@
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+.wp-block-create-block-block-hero {
+	@import "tailwindcss/preflight.css" layer(base);
+	@import "tailwindcss/utilities.css" layer(utilities);
+}

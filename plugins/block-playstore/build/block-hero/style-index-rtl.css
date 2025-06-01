@@ -1,0 +1,1 @@
+@layer theme, base, components, utilities;.wp-block-create-block-block-hero{@import"tailwindcss/preflight.css"layer(base);@import"tailwindcss/utilities.css"layer(utilities)}

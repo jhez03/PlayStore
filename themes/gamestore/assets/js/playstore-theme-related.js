@@ -2,10 +2,10 @@ const styleToggle = document.querySelector(".header-mode-switcher");
 
 const setDarkMode = (isDark) => {
   if (isDark) {
-    document.body.classList.add("dark-mode-playstore");
+    document.documentElement.classList.add("dark-mode-playstore");
     localStorage.setItem("styleMode", "dark");
   } else {
-    document.body.classList.remove("dark-mode-playstore");
+    document.documentElement.classList.remove("dark-mode-playstore");
     localStorage.setItem("styleMode", "light");
   }
 };

@@ -1,213 +1,77 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@custom-variant dark (&:where(.dark, .dark-mode-playstore *));
 .wp-block-create-block-block-header {
-	width: 100%;
-	background: var(--background-default, #fafafa);
-	color: var(--text-primary, #0e0d0f);
-	font-size: clamp(8px, 1.3vw, 14px);
+	@import "tailwindcss/preflight.css" layer(base);
+	@import "tailwindcss/utilities.css" layer(utilities);
+
+	/* navigation/14/bold */
+	font-family: Urbanist;
+	font-size: 14px;
+	font-style: normal;
 	font-weight: 700;
-	line-height: 1.4;
 	letter-spacing: 2.1px;
 	text-transform: uppercase;
 
-	.inner-header {
-		justify-content: space-between;
-		align-items: center;
-		display: flex;
-		padding: 8px 32px;
+	@layer components {
+		.playstore-header {
+			@apply w-full bg-[#ffffff] dark:bg-[#0E0D0F] border-b border-[#fafafa] py-2 px-8 z-50;
 
-		.nav-start {
-			display: flex;
-			align-items: center;
-			gap: clamp(0.74rem, 1.5vw, 3rem);
-
-			.playstore-nav-links {
-				display: flex;
-				gap: clamp(12px, 1.5vw, 32px);
-				align-items: center;
-				white-space: nowrap;
-
-				.menu-item-has-children {
-					align-items: center;
-					display: flex;
-
-					.playstore-submenu-toggle {
-						background-color: inherit;
-						border: none;
-						cursor: pointer;
-					}
-
-					.sub-menu {
-						display: none;
-					}
-					.sub-menu.visible {
-						display: flex;
-						position: absolute;
-						padding: 16px 268px;
-						top: 50px;
-						left: 0;
-						right: 0;
-						align-items: center;
-						background: var(--secondary-48, rgba(250, 250, 250, 0.48));
-						gap: 48px;
-					}
-				}
-			}
-			img {
-				width: clamp(130px, 14vw, 196px);
-			}
-
-			.playstore-nav-links li a {
-				color: var(--text-primary, #0e0d0f);
-				text-decoration: none;
-			}
-		}
-		.nav-end {
-			gap: clamp(0.25rem, 1vw, 0.75rem);
-			display: flex;
-			align-items: center;
-
-			.header-search,
-			.header-mode-switcher {
-				cursor: pointer;
-			}
-
-			.header-member-link a {
-				padding: 4px 20px;
-				justify-content: center;
-				border-radius: 5px;
-				border: 1px solid var(--divider-main, rgba(14, 13, 15, 0.08));
-				text-decoration: none;
-				color: var(--text-primary, #0e0d0f);
-				white-space: nowrap;
+			a {
+				@apply text-(--text-primary) whitespace-nowrap;
 			}
 			button {
-				display: none;
-			}
-		}
-		@media (max-width: 750px) {
-			.nav-start {
-				display: flex;
-				gap: clamp(0.74rem, 1.5vw, 3rem);
-				nav .menu {
-					display: none;
-				}
-
-				.sub-menu {
-					display: flex;
-				}
+				@apply cursor-pointer;
 			}
 
-			.nav-end {
-				gap: clamp(0.25rem, 1vw, 0.75rem);
+			nav {
+				@apply flex items-center justify-between;
 
-				button {
-					display: flex;
-					background-color: transparent;
-					border: none;
+				.playstore-nav-links {
+					@apply flex items-center;
+
+					.menu-item-has-children {
+						@apply flex items-center;
+
+						.sub-menu.visible {
+							@apply flex items-center gap-[32px] absolute top-[80px] h-[52px] left-0 right-0 bg-(--secondary-48) px-[268px] py-[16px] z-50;
+						}
+						.sub-menu {
+							@apply hidden;
+						}
+					}
 				}
 			}
 		}
-		@media (max-width: 1024px) {
-			.nav-end {
-				a {
-					display: none;
-				}
-				.header-member-link {
-					background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12.1605 11.62C12.1305 11.62 12.1105 11.62 12.0805 11.62C12.0305 11.61 11.9605 11.61 11.9005 11.62C9.00055 11.53 6.81055 9.25 6.81055 6.44C6.81055 3.58 9.14055 1.25 12.0005 1.25C14.8605 1.25 17.1905 3.58 17.1905 6.44C17.1805 9.25 14.9805 11.53 12.1905 11.62C12.1805 11.62 12.1705 11.62 12.1605 11.62ZM12.0005 2.75C9.97055 2.75 8.31055 4.41 8.31055 6.44C8.31055 8.44 9.87055 10.05 11.8605 10.12C11.9105 10.11 12.0505 10.11 12.1805 10.12C14.1405 10.03 15.6805 8.42 15.6905 6.44C15.6905 4.41 14.0305 2.75 12.0005 2.75Z" fill="%230E0D0F" fill-opacity="0.64"/><path d="M12.1696 22.55C10.2096 22.55 8.23961 22.05 6.74961 21.05C5.35961 20.13 4.59961 18.87 4.59961 17.5C4.59961 16.13 5.35961 14.86 6.74961 13.93C9.74961 11.94 14.6096 11.94 17.5896 13.93C18.9696 14.85 19.7396 16.11 19.7396 17.48C19.7396 18.85 18.9796 20.12 17.5896 21.05C16.0896 22.05 14.1296 22.55 12.1696 22.55ZM7.57961 15.19C6.61961 15.83 6.09961 16.65 6.09961 17.51C6.09961 18.36 6.62961 19.18 7.57961 19.81C10.0696 21.48 14.2696 21.48 16.7596 19.81C17.7196 19.17 18.2396 18.35 18.2396 17.49C18.2396 16.64 17.7096 15.82 16.7596 15.19C14.2696 13.53 10.0696 13.53 7.57961 15.19Z" fill="%230E0D0F" fill-opacity="0.64"/></svg>');
-					background-repeat: no-repeat;
-					justify-content: center;
-					width: 24px;
-					height: 24px;
-					flex-shrink: 0;
-				}
-			}
-		}
-	}
-	// mobile overlay css
-	.hamburger-overlay {
-		display: none;
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100vh;
-		z-index: 9999;
-		background-image: url("img/light.png");
-		background-size: cover;
-		background-position: center;
-		flex-direction: column;
-		gap: 48px;
 
-		.hamburger-header {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 8px 16px;
+		.hamburger-overlay {
+			background-image: url("../../src/block-header/assets/images/light.png");
+			@apply fixed inset-0 z-50 bg-black/20 bg-cover bg-center gap-[48px] flex flex-col px-[16px] py-[0];
 
-			.hamburger-logo {
-				width: 147px;
+			.hamburger-header,
+			.hamburger-menu {
+				@apply flex justify-between items-center px-8 py-4;
 			}
 
-			.hamburger-close {
-				background: transparent;
-				border: none;
-				cursor: pointer;
-				padding: 6px;
-			}
-		}
-		.hamburger-menu {
-			padding: 8px 16px;
-			display: flex;
-			flex-direction: column;
+			.hamburger-menu {
+				@apply text-(--text-primary) text-[20px];
 
-			.hamburger-nav-links {
-				display: flex;
-				flex-direction: column;
-				gap: 48px;
-			}
-			.menu-item-has-children {
-				display: inline-block;
-				justify-content: space-between;
-				align-items: center;
+				.hamburger-nav-links {
+					@apply gap-[48px] flex flex-col;
 
-				.playstore-submenu-toggle {
-					background-color: inherit;
-					border: none;
-					cursor: pointer;
+					.menu-item-has-children {
+						@apply inline justify-between items-center;
+
+						.sub-menu.visible {
+							@apply flex flex-col gap-[16px] px-[16px];
+						}
+
+						.sub-menu {
+							@apply hidden;
+						}
+					}
 				}
-
-				.sub-menu {
-					display: none;
-				}
-				.sub-menu.visible {
-					display: flex;
-					flex-direction: column;
-					gap: 16px;
-					padding: 16px 0;
-				}
-			}
-
-			ul li a {
-				color: var(--text-primary, #0e0d0f);
-				text-decoration: none;
-				font-size: 20px;
 			}
 		}
 	}
-	.hamburger-overlay.active {
-		display: flex;
-	}
-}
-@media (max-width: 1024px) {
-	.dark-mode-playstore
-		.wp-block-create-block-block-header
-		.inner-header
-		.nav-end
-		.header-member-link {
-		background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12.1605 11.62C12.1305 11.62 12.1105 11.62 12.0805 11.62C12.0305 11.61 11.9605 11.61 11.9005 11.62C9.00055 11.53 6.81055 9.25 6.81055 6.44C6.81055 3.58 9.14055 1.25 12.0005 1.25C14.8605 1.25 17.1905 3.58 17.1905 6.44C17.1805 9.25 14.9805 11.53 12.1905 11.62C12.1805 11.62 12.1705 11.62 12.1605 11.62ZM12.0005 2.75C9.97055 2.75 8.31055 4.41 8.31055 6.44C8.31055 8.44 9.87055 10.05 11.8605 10.12C11.9105 10.11 12.0505 10.11 12.1805 10.12C14.1405 10.03 15.6805 8.42 15.6905 6.44C15.6905 4.41 14.0305 2.75 12.0005 2.75Z" fill="white" fill-opacity="0.64"/><path d="M12.1696 22.55C10.2096 22.55 8.23961 22.05 6.74961 21.05C5.35961 20.13 4.59961 18.87 4.59961 17.5C4.59961 16.13 5.35961 14.86 6.74961 13.93C9.74961 11.94 14.6096 11.94 17.5896 13.93C18.9696 14.85 19.7396 16.11 19.7396 17.48C19.7396 18.85 18.9796 20.12 17.5896 21.05C16.0896 22.05 14.1296 22.55 12.1696 22.55ZM7.57961 15.19C6.61961 15.83 6.09961 16.65 6.09961 17.51C6.09961 18.36 6.62961 19.18 7.57961 19.81C10.0696 21.48 14.2696 21.48 16.7596 19.81C17.7196 19.17 18.2396 18.35 18.2396 17.49C18.2396 16.64 17.7096 15.82 16.7596 15.19C14.2696 13.53 10.0696 13.53 7.57961 15.19Z" fill="white" fill-opacity="0.64"/></svg>');
-	}
-}
-.dark-mode-playstore
-	.wp-block-create-block-block-header
-	.hamburger-overlay.active {
-	background-image: url("img/dark.png");
 }
