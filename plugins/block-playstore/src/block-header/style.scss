@@ -45,8 +45,8 @@
 		}
 
 		.hamburger-overlay {
-			background-image: url("../../src/block-header/assets/images/light.png");
-			@apply fixed inset-0 z-50 bg-black/20 bg-cover bg-center gap-[48px] flex flex-col px-[16px] py-[0];
+			background-image:;
+			@apply fixed inset-0 z-50 bg-black/20 bg-cover bg-center gap-[48px] flex flex-col px-[16px] py-[0] bg-[url(../../src/block-header/assets/images/light.png)] dark:bg-[url(../../src/block-header/assets/images/dark.png)];
 
 			.hamburger-header,
 			.hamburger-menu {
