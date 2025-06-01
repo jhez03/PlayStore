@@ -51,7 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.addEventListener("click", function (e) {
 		const toggle = e.target.closest(".playstore-submenu-toggle");
 		const menuItem = e.target.closest(".menu-item-has-children");
-		console.log(menuItem);
 		// Toggle submenu
 		if (toggle && menuItem) {
 			e.preventDefault();

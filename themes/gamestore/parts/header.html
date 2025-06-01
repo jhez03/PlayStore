@@ -1,1 +1,47 @@
-<!-- wp:create-block/block-header {"memberLink":"member/","cartLink":"cart/","logo":{"id":41,"title":"full","filename":"full.svg","url":"https://playstore.localhost/wp-content/uploads/2025/05/full.svg","link":"https://playstore.localhost/?attachment_id=41","alt":"","author":"1","description":"","caption":"","name":"full","status":"inherit","uploadedTo":0,"date":"2025-05-28T05:54:07.000Z","modified":"2025-05-28T05:54:07.000Z","menuOrder":0,"mime":"image/svg+xml","type":"image","subtype":"svg+xml","icon":"https://playstore.localhost/wp-includes/images/media/default.svg","dateFormatted":"May 28, 2025","nonces":{"update":"7a35d37a77","delete":"624db1b19e","edit":"873134fa51"},"editLink":"https://playstore.localhost/wp-admin/post.php?post=41\u0026action=edit","meta":false,"authorName":"admin","authorLink":"https://playstore.localhost/wp-admin/profile.php","filesizeInBytes":16357,"filesizeHumanReadable":"16 KB","context":"","sizes":{"full":{"url":"https://playstore.localhost/wp-content/uploads/2025/05/full.svg"}},"compat":{"item":"","meta":""},"mediaStates":"Logo","acf_errors":false},"className":"wp-block-create-block-block-header"} /-->
+<!-- wp:template-part {"slug":"header","theme":"gamestore","area":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|60","bottom":"var:preset|spacing|50"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="padding-top:var(--wp--preset--spacing--60);padding-bottom:var(--wp--preset--spacing--50)"><!-- wp:heading {"level":1} -->
+<h1 class="wp-block-heading">Latest posts</h1>
+<!-- /wp:heading -->
+
+<!-- wp:query {"queryId":3,"query":{"perPage":10,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":true},"layout":{"type":"constrained"}} -->
+<div class="wp-block-query"><!-- wp:post-template -->
+<!-- wp:post-title {"isLink":true} /-->
+
+<!-- wp:post-featured-image {"isLink":true} /-->
+
+<!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|60"}},"layout":{"type":"flex","justifyContent":"left"}} -->
+<div class="wp-block-group"><!-- wp:group {"style":{"spacing":{"blockGap":"var:preset|spacing|20"}},"layout":{"type":"flex","flexWrap":"nowrap"}} -->
+<div class="wp-block-group"><!-- wp:post-author-name {"isLink":true} /-->
+
+<!-- wp:post-date /--></div>
+<!-- /wp:group -->
+
+<!-- wp:group {"layout":{"type":"constrained"}} -->
+<div class="wp-block-group"><!-- wp:post-terms {"term":"category","prefix":"Categories: "} /--></div>
+<!-- /wp:group --></div>
+<!-- /wp:group -->
+
+<!-- wp:post-excerpt {"moreText":"Read more"} /-->
+
+<!-- wp:spacer {"height":"1rem"} -->
+<div style="height:1rem" aria-hidden="true" class="wp-block-spacer"></div>
+<!-- /wp:spacer -->
+<!-- /wp:post-template -->
+
+<!-- wp:query-no-results -->
+<!-- wp:paragraph {"placeholder":"Add text or blocks that will display when a query returns no results."} -->
+<p></p>
+<!-- /wp:paragraph -->
+<!-- /wp:query-no-results -->
+
+<!-- wp:query-pagination {"paginationArrow":"arrow","layout":{"type":"flex","justifyContent":"space-between"}} -->
+<!-- wp:query-pagination-previous /-->
+
+<!-- wp:query-pagination-next /-->
+<!-- /wp:query-pagination --></div>
+<!-- /wp:query --></main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","theme":"gamestore","tagName":"footer","className":"site-footer"} /-->
