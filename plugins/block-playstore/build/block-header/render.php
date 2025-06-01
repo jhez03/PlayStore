@@ -7,7 +7,7 @@ $menu          = wp_get_nav_menu_object( $attributes['selectedMenu'] ) ?? null;
 ?>
 
 <div class="wp-block-create-block-block-header">
-<header class="playstore-header ">
+<header class="playstore-header w-full bg-[#ffffff] dark:bg-[#0E0D0F] border-b border-[#fafafa] py-2 px-8 z-50 text-(--text-primary)">
 	<div class="inner-header">
 		<div class="flex items-center justify-between h-16">
 

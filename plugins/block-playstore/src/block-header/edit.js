@@ -146,15 +146,14 @@ export default function Edit({ attributes, setAttributes }) {
 						)}
 					/>
 				</MediaUploadCheck>
-				<div className="playstore-header">
+				<div className="playstore-header w-full bg-[#ffffff] dark:bg-[#0E0D0F] border-b border-[#fafafa] py-2 px-8 z-50 text-(--text-primary)">
 					<div className="px-4 sm:px-6 lg:px-8">
 						<div className="flex items-center justify-between h-16">
-							{logo && (
-								<img src={logo.url} alt="Logo" className="header-logo" />
-							)}
-
 							{/* Desktop Navigation */}
-							<nav className="hidden lg:flex items-center space-x-8">
+							<nav className="lg:flex items-center lg:gap-[48px] gap-[10px]">
+								{logo && (
+									<img src={logo.url} alt="Logo" className="header-logo" />
+								)}
 								{tree.length > 0 ? (
 									renderMenuTree(tree)
 								) : (
@@ -193,108 +192,51 @@ export default function Edit({ attributes, setAttributes }) {
 										<path
 											d="M13 18.5V6.5"
 											stroke="#0E0D0F"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
+											strokeOpacity="0.64"
+											strokeLinecap="round"
+											strokeLinejoin="round"
 										/>
 										<path
 											d="M1 12.5H4"
 											stroke="#0E0D0F"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
+											strokeOpacity="0.64"
+											strokeLinecap="round"
+											strokeLinejoin="round"
 										/>
 										<path
 											d="M4.50977 4.01025L6.63977 6.14025"
 											stroke="#0E0D0F"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
+											strokeOpacity="0.64"
+											strokeLinecap="round"
+											strokeLinejoin="round"
 										/>
 										<path
 											d="M13 0.5V3.5"
 											stroke="#0E0D0F"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
+											strokeOpacity="0.64"
+											strokeLinecap="round"
+											strokeLinejoin="round"
 										/>
 										<path
 											d="M13 24.5V21.5"
 											stroke="#0E0D0F"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
+											strokeOpacity="0.64"
+											strokeLinecap="round"
+											strokeLinejoin="round"
 										/>
 										<path
 											d="M4.50977 20.9899L6.63977 18.8599"
 											stroke="#0E0D0F"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
+											strokeOpacity="0.64"
+											strokeLinecap="round"
+											strokeLinejoin="round"
 										/>
 										<path
 											d="M13 18.5C16.3137 18.5 19 15.8137 19 12.5C19 9.18629 16.3137 6.5 13 6.5C9.68629 6.5 7 9.18629 7 12.5C7 15.8137 9.68629 18.5 13 18.5Z"
 											stroke="#0E0D0F"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-										/>
-									</svg>
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="36"
-										height="36"
-										viewBox="0 0 20 25"
-										fill="none"
-									>
-										<path
-											d="M13 18.5V6.5"
-											stroke="white"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-										/>
-										<path
-											d="M1 12.5H4"
-											stroke="white"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-										/>
-										<path
-											d="M4.50977 4.01025L6.63977 6.14025"
-											stroke="white"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-										/>
-										<path
-											d="M13 0.5V3.5"
-											stroke="white"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-										/>
-										<path
-											d="M13 24.5V21.5"
-											stroke="white"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-										/>
-										<path
-											d="M4.50977 20.9899L6.63977 18.8599"
-											stroke="white"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
-										/>
-										<path
-											d="M13 18.5C16.3137 18.5 19 15.8137 19 12.5C19 9.18629 16.3137 6.5 13 6.5C9.68629 6.5 7 9.18629 7 12.5C7 15.8137 9.68629 18.5 13 18.5Z"
-											stroke="white"
-											stroke-opacity="0.64"
-											stroke-linecap="round"
-											stroke-linejoin="round"
+											strokeOpacity="0.64"
+											strokeLinecap="round"
+											strokeLinejoin="round"
 										/>
 									</svg>
 								</div>
