@@ -4,6 +4,7 @@ module.exports = {
 		"./src/block-hero/**/*.{js,jsx,ts,tsx,php,scss,css}",
 		// Add more block folders as needed
 	],
+	darkMode: "class",
 	theme: {
 		extend: {},
 	},

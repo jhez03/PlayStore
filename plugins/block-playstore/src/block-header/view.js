@@ -27,26 +27,22 @@ document.addEventListener("DOMContentLoaded", () => {
 	const hamburger = document.getElementById("hamburger");
 	const overlay = document.getElementById("hamburger-overlay");
 	const closeBtn = document.getElementById("hamburger-close");
-
 	// Open hamburger menu
 	hamburger.addEventListener("click", () => {
-		overlay.classList.add("active");
-		document.body.style.overflow = "hidden";
+		overlay.classList.remove("hidden");
 	});
 
 	// Close hamburger menu
 	closeBtn.addEventListener("click", () => {
-		overlay.classList.remove("active");
+		overlay.classList.add("hidden");
 
-		document.body.style.overflow = "";
 		closeAllSubmenus(); // optional: collapse submenus when closing
 	});
 
 	// ESC key to close menu and submenus
 	document.addEventListener("keydown", (e) => {
 		if (e.key === "Escape") {
-			overlay.classList.remove("active");
-			document.body.style.overflow = "";
+			overlay.classList.add("hidden");
 			closeAllSubmenus();
 		}
 	});
@@ -55,11 +51,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	document.addEventListener("click", function (e) {
 		const toggle = e.target.closest(".playstore-submenu-toggle");
 		const menuItem = e.target.closest(".menu-item-has-children");
-
+		console.log(menuItem);
 		// Toggle submenu
 		if (toggle && menuItem) {
 			e.preventDefault();
-
 			const isExpanded = toggle.getAttribute("aria-expanded") === "true";
 
 			// Close all other submenus

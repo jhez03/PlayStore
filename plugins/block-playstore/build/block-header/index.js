@@ -181,140 +181,189 @@ function Edit({
             children: logo ? "Change Logo" : "Upload Logo"
           })
         })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-        className: "inner-header",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-          className: "nav-start",
-          children: [logo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
-            src: logo.url,
-            alt: "Logo",
-            className: "header-logo"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("nav", {
-            className: "menu",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-              className: "menu",
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+        className: "playstore-header",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+          className: "px-4 sm:px-6 lg:px-8",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+            className: "flex items-center justify-between h-16",
+            children: [logo && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("img", {
+              src: logo.url,
+              alt: "Logo",
+              className: "header-logo"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("nav", {
+              className: "hidden lg:flex items-center space-x-8",
               children: tree.length > 0 ? renderMenuTree(tree) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("p", {
                 children: "Select a menu to display navigation items."
               })
-            })
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-          className: "nav-end",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-            className: "header-search",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
-              xmlns: "http://www.w3.org/2000/svg",
-              width: "24",
-              height: "24",
-              viewBox: "0 0 24 24",
-              fill: "none",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-                d: "M22.29 21.66L17.61 16.95C20.97 13.2 20.7 7.44002 16.95 4.05002C13.2 0.660021 7.44002 0.960021 4.05002 4.71002C0.660021 8.46002 0.960021 14.22 4.71002 17.61C8.19002 20.76 13.5 20.76 16.98 17.61L21.69 22.32L22.29 21.66ZM10.83 19.05C6.30002 19.05 2.61002 15.36 2.61002 10.83C2.61002 6.27002 6.30002 2.61002 10.83 2.61002C15.36 2.61002 19.05 6.30002 19.05 10.83C19.05 15.36 15.36 19.05 10.83 19.05Z",
-                fill: "var(--action-main-svg, rgb(14,13,15))",
-                fillOpacity: "0.64"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-                d: "M10.8301 3.83984V4.73984C14.1901 4.73984 16.9201 7.46984 16.9201 10.8298H17.8201C17.8201 6.95984 14.7001 3.83984 10.8301 3.83984Z",
-                fill: "var(--action-main-svg, rgb(14,13,15))",
-                fillOpacity: "0.64"
-              })]
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-            className: "header-mode-switcher",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
-              width: "36",
-              height: "36",
-              viewBox: "0 0 36 36",
-              fill: "none",
-              xmlns: "http://www.w3.org/2000/svg",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-                d: "M21 24V12",
-                stroke: "var(--action-main-svg, rgb(14, 13, 15))",
-                strokeOpacity: "0.64",
-                strokeLinecap: "round",
-                strokeLinejoin: "round"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-                d: "M9 18H12",
-                stroke: "var(--action-main-svg, rgb(14, 13, 15))",
-                strokeOpacity: "0.64",
-                strokeLinecap: "round",
-                strokeLinejoin: "round"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-                d: "M12.5098 9.51025L14.6398 11.6403",
-                stroke: "var(--action-main-svg, rgb(14, 13, 15))",
-                strokeOpacity: "0.64",
-                strokeLinecap: "round",
-                strokeLinejoin: "round"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-                d: "M21 6V9",
-                stroke: "var(--action-main-svg, rgb(14, 13, 15))",
-                strokeOpacity: "0.64",
-                strokeLinecap: "round",
-                strokeLinejoin: "round"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-                d: "M21 30V27",
-                stroke: "var(--action-main-svg, rgb(14, 13, 15))",
-                strokeOpacity: "0.64",
-                strokeLinecap: "round",
-                strokeLinejoin: "round"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-                d: "M12.5098 26.4899L14.6398 24.3599",
-                stroke: "var(--action-main-svg, rgb(14, 13, 15))",
-                strokeOpacity: "0.64",
-                strokeLinecap: "round",
-                strokeLinejoin: "round"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-                d: "M21 24C24.3137 24 27 21.3137 27 18C27 14.6863 24.3137 12 21 12C17.6863 12 15 14.6863 15 18C15 21.3137 17.6863 24 21 24Z",
-                stroke: "var(--action-main-svg, rgb(14, 13, 15))",
-                strokeOpacity: "0.64",
-                strokeLinecap: "round",
-                strokeLinejoin: "round"
-              })]
-            })
-          }), cartLink && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-            className: "header-cart-link",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
-              href: cartLink,
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
-                xmlns: "http://www.w3.org/2000/svg",
-                width: "26",
-                height: "20",
-                viewBox: "0 0 26 20",
-                fill: "none",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-                  d: "M2.71436 6.57178L4.42864 18.5718H21.5715L23.2858 6.57178",
-                  stroke: "var(--action-main-svg, rgb(14, 13, 15))",
-                  strokeOpacity: "0.64",
-                  strokeLinecap: "round",
-                  strokeLinejoin: "round"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-                  d: "M7.85693 8.28585L9.57122 1.42871",
-                  stroke: "var(--action-main-svg, rgb(14, 13, 15))",
-                  strokeOpacity: "0.64",
-                  strokeLinecap: "round",
-                  strokeLinejoin: "round"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-                  d: "M18.143 8.28585L16.4287 1.42871",
-                  stroke: "var(--action-main-svg, rgb(14, 13, 15))",
-                  strokeOpacity: "0.64",
-                  strokeLinecap: "round",
-                  strokeLinejoin: "round"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
-                  d: "M1 6.57178H25",
-                  stroke: "var(--action-main-svg, rgb(14, 13, 15))",
-                  strokeOpacity: "0.64",
-                  strokeLinecap: "round",
-                  strokeLinejoin: "round"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+              className: "flex items-center space-x-4",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                className: "header-search",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: "24",
+                  height: "24",
+                  viewBox: "0 0 24 24",
+                  fill: "none",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M22.29 21.66L17.61 16.95C20.97 13.2 20.7 7.44002 16.95 4.05002C13.2 0.660021 7.44002 0.960021 4.05002 4.71002C0.660021 8.46002 0.960021 14.22 4.71002 17.61C8.19002 20.76 13.5 20.76 16.98 17.61L21.69 22.32L22.29 21.66ZM10.83 19.05C6.30002 19.05 2.61002 15.36 2.61002 10.83C2.61002 6.27002 6.30002 2.61002 10.83 2.61002C15.36 2.61002 19.05 6.30002 19.05 10.83C19.05 15.36 15.36 19.05 10.83 19.05Z",
+                    fill: "var(--action-main-svg, rgb(14,13,15))",
+                    fillOpacity: "0.64"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M10.8301 3.83984V4.73984C14.1901 4.73984 16.9201 7.46984 16.9201 10.8298H17.8201C17.8201 6.95984 14.7001 3.83984 10.8301 3.83984Z",
+                    fill: "var(--action-main-svg, rgb(14,13,15))",
+                    fillOpacity: "0.64"
+                  })]
+                })
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
+                className: "item-center",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: "36",
+                  height: "36",
+                  viewBox: "0 0 20 25",
+                  fill: "none",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M13 18.5V6.5",
+                    stroke: "#0E0D0F",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M1 12.5H4",
+                    stroke: "#0E0D0F",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M4.50977 4.01025L6.63977 6.14025",
+                    stroke: "#0E0D0F",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M13 0.5V3.5",
+                    stroke: "#0E0D0F",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M13 24.5V21.5",
+                    stroke: "#0E0D0F",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M4.50977 20.9899L6.63977 18.8599",
+                    stroke: "#0E0D0F",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M13 18.5C16.3137 18.5 19 15.8137 19 12.5C19 9.18629 16.3137 6.5 13 6.5C9.68629 6.5 7 9.18629 7 12.5C7 15.8137 9.68629 18.5 13 18.5Z",
+                    stroke: "#0E0D0F",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
+                  xmlns: "http://www.w3.org/2000/svg",
+                  width: "36",
+                  height: "36",
+                  viewBox: "0 0 20 25",
+                  fill: "none",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M13 18.5V6.5",
+                    stroke: "white",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M1 12.5H4",
+                    stroke: "white",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M4.50977 4.01025L6.63977 6.14025",
+                    stroke: "white",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M13 0.5V3.5",
+                    stroke: "white",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M13 24.5V21.5",
+                    stroke: "white",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M4.50977 20.9899L6.63977 18.8599",
+                    stroke: "white",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                    d: "M13 18.5C16.3137 18.5 19 15.8137 19 12.5C19 9.18629 16.3137 6.5 13 6.5C9.68629 6.5 7 9.18629 7 12.5C7 15.8137 9.68629 18.5 13 18.5Z",
+                    stroke: "white",
+                    "stroke-opacity": "0.64",
+                    "stroke-linecap": "round",
+                    "stroke-linejoin": "round"
+                  })]
                 })]
-              })
-            })
-          }), memberLink && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-            className: "header-member-link",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
-              href: memberLink,
-              children: "Member Area"
-            })
-          })]
-        })]
+              }), cartLink && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                className: "header-cart-link",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
+                  href: cartLink,
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("svg", {
+                    xmlns: "http://www.w3.org/2000/svg",
+                    width: "26",
+                    height: "20",
+                    viewBox: "0 0 26 20",
+                    fill: "none",
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                      d: "M2.71436 6.57178L4.42864 18.5718H21.5715L23.2858 6.57178",
+                      stroke: "var(--action-main-svg, rgb(14, 13, 15))",
+                      strokeOpacity: "0.64",
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                      d: "M7.85693 8.28585L9.57122 1.42871",
+                      stroke: "var(--action-main-svg, rgb(14, 13, 15))",
+                      strokeOpacity: "0.64",
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                      d: "M18.143 8.28585L16.4287 1.42871",
+                      stroke: "var(--action-main-svg, rgb(14, 13, 15))",
+                      strokeOpacity: "0.64",
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round"
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("path", {
+                      d: "M1 6.57178H25",
+                      stroke: "var(--action-main-svg, rgb(14, 13, 15))",
+                      strokeOpacity: "0.64",
+                      strokeLinecap: "round",
+                      strokeLinejoin: "round"
+                    })]
+                  })
+                })
+              }), memberLink && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
+                className: "header-member-link",
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("a", {
+                  href: memberLink,
+                  children: "Member Area"
+                })
+              })]
+            })]
+          })
+        })
       })]
     })
   });
