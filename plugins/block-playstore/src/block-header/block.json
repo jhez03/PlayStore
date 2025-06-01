@@ -9,7 +9,8 @@
 	"description": "Example block scaffolded with Create Block tool.",
 	"example": {},
 	"supports": {
-		"html": false
+		"html": false,
+		"innerBlocks": true
 	},
 	"attributes": {
 		"memberLink": {
@@ -17,11 +18,23 @@
 		},
 		"cartLink": {
 			"type": "string"
+		},
+		"logo": {
+			"type": "object"
+		},
+		"selectedMenu": {
+			"type": "string",
+			"default": ""
+		},
+		"menuItems": {
+			"type": "array",
+			"default": []
 		}
 	},
 	"textdomain": "block-playstore",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
+	"render": "file:./render.php",
 	"style": "file:./style-index.css",
 	"viewScript": "file:./view.js"
 }

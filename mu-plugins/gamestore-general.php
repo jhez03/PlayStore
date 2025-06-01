@@ -42,3 +42,16 @@ function playstore_fix_svg() {
   </style>';
 }
 add_action( 'admin_head', 'playstore_fix_svg' );
+
+// register menu nav
+function playstore_register_menu_nav() {
+	register_nav_menus(
+		array(
+			'playstore-menu'        => __( 'PlayStore Menu' ),
+			'playstore-footer-menu' => __( 'PlayStore Footer Menu' ),
+			'playstore-mobile-menu' => __( 'PlayStore Mobile Menu' ),
+			'playstore-header-menu' => __( 'PlayStore Header Menu' ),
+		)
+	);
+}
+add_action( 'init', 'playstore_register_menu_nav' );

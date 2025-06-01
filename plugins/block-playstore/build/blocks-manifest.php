@@ -14,7 +14,8 @@ return array(
 			
 		),
 		'supports' => array(
-			'html' => false
+			'html' => false,
+			'innerBlocks' => true
 		),
 		'attributes' => array(
 			'memberLink' => array(
@@ -22,6 +23,68 @@ return array(
 			),
 			'cartLink' => array(
 				'type' => 'string'
+			),
+			'logo' => array(
+				'type' => 'object'
+			),
+			'selectedMenu' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'menuItems' => array(
+				'type' => 'array',
+				'default' => array(
+					
+				)
+			)
+		),
+		'textdomain' => 'block-playstore',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'render' => 'file:./render.php',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
+	),
+	'block-hero' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'create-block/block-hero',
+		'version' => '0.1.0',
+		'title' => 'Playstore Hero',
+		'category' => 'widgets',
+		'icon' => 'smiley',
+		'description' => 'Block for displaying a hero section with a Playstore link.',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'attributes' => array(
+			'backgroundType' => array(
+				'type' => 'string',
+				'default' => 'image'
+			),
+			'backgroundUrl' => array(
+				'type' => 'string'
+			),
+			'backgroundId' => array(
+				'type' => 'number'
+			),
+			'headline' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => 'h1'
+			),
+			'subheadline' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => 'p'
+			),
+			'buttonText' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => 'span'
 			)
 		),
 		'textdomain' => 'block-playstore',
