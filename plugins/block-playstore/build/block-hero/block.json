@@ -11,6 +11,33 @@
   "supports": {
     "html": false
   },
+  "attributes": {
+    "backgroundType": {
+      "type": "string",
+      "default": "image"
+    },
+    "backgroundUrl": {
+      "type": "string"
+    },
+    "backgroundId": {
+      "type": "number"
+    },
+    "headline": {
+      "type": "string",
+      "source": "html",
+      "selector": "h1"
+    },
+    "subheadline": {
+      "type": "string",
+      "source": "html",
+      "selector": "p"
+    },
+    "buttonText": {
+      "type": "string",
+      "source": "html",
+      "selector": "span"
+    }
+  },
   "textdomain": "block-playstore",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",

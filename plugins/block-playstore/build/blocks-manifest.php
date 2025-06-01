@@ -60,6 +60,33 @@ return array(
 		'supports' => array(
 			'html' => false
 		),
+		'attributes' => array(
+			'backgroundType' => array(
+				'type' => 'string',
+				'default' => 'image'
+			),
+			'backgroundUrl' => array(
+				'type' => 'string'
+			),
+			'backgroundId' => array(
+				'type' => 'number'
+			),
+			'headline' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => 'h1'
+			),
+			'subheadline' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => 'p'
+			),
+			'buttonText' => array(
+				'type' => 'string',
+				'source' => 'html',
+				'selector' => 'span'
+			)
+		),
 		'textdomain' => 'block-playstore',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',

@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	// Close hamburger menu
 	closeBtn.addEventListener("click", () => {
 		overlay.classList.remove("active");
+
 		document.body.style.overflow = "";
 		closeAllSubmenus(); // optional: collapse submenus when closing
 	});

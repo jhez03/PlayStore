@@ -1,4 +1,9 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
 .wp-block-create-block-block-header {
+	@import "tailwindcss/preflight.css" layer(base);
+	@import "tailwindcss/utilities.css" layer(utilities);
+
 	width: 100%;
 	background: var(--background-default, #fafafa);
 	color: var(--text-primary, #0e0d0f);
@@ -7,6 +12,82 @@
 	line-height: 1.4;
 	letter-spacing: 2.1px;
 	text-transform: uppercase;
+
+	// mobile overlay css
+	.hamburger-overlay.active {
+		display: flex;
+	}
+
+	.hamburger-overlay {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		z-index: 9999;
+		background-image: url("img/light.png");
+		background-size: cover;
+		background-position: center;
+		flex-direction: column;
+		gap: 48px;
+
+		.hamburger-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 8px 16px;
+
+			.hamburger-logo {
+				width: 147px;
+			}
+
+			.hamburger-close {
+				background: transparent;
+				border: none;
+				cursor: pointer;
+				padding: 6px;
+			}
+		}
+		.hamburger-menu {
+			padding: 8px 16px;
+			display: flex;
+			flex-direction: column;
+
+			.hamburger-nav-links {
+				display: flex;
+				flex-direction: column;
+				gap: 48px;
+			}
+			.menu-item-has-children {
+				display: inline-block;
+				justify-content: space-between;
+				align-items: center;
+
+				.playstore-submenu-toggle {
+					background-color: inherit;
+					border: none;
+					cursor: pointer;
+				}
+
+				.sub-menu {
+					display: none;
+				}
+				.sub-menu.visible {
+					display: flex;
+					flex-direction: column;
+					gap: 16px;
+					padding: 16px 0;
+				}
+			}
+
+			ul li a {
+				color: var(--text-primary, #0e0d0f);
+				text-decoration: none;
+				font-size: 20px;
+			}
+		}
+	}
 
 	.inner-header {
 		justify-content: space-between;
@@ -121,80 +202,6 @@
 				}
 			}
 		}
-	}
-	// mobile overlay css
-	.hamburger-overlay {
-		display: none;
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100vh;
-		z-index: 9999;
-		background-image: url("img/light.png");
-		background-size: cover;
-		background-position: center;
-		flex-direction: column;
-		gap: 48px;
-
-		.hamburger-header {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			padding: 8px 16px;
-
-			.hamburger-logo {
-				width: 147px;
-			}
-
-			.hamburger-close {
-				background: transparent;
-				border: none;
-				cursor: pointer;
-				padding: 6px;
-			}
-		}
-		.hamburger-menu {
-			padding: 8px 16px;
-			display: flex;
-			flex-direction: column;
-
-			.hamburger-nav-links {
-				display: flex;
-				flex-direction: column;
-				gap: 48px;
-			}
-			.menu-item-has-children {
-				display: inline-block;
-				justify-content: space-between;
-				align-items: center;
-
-				.playstore-submenu-toggle {
-					background-color: inherit;
-					border: none;
-					cursor: pointer;
-				}
-
-				.sub-menu {
-					display: none;
-				}
-				.sub-menu.visible {
-					display: flex;
-					flex-direction: column;
-					gap: 16px;
-					padding: 16px 0;
-				}
-			}
-
-			ul li a {
-				color: var(--text-primary, #0e0d0f);
-				text-decoration: none;
-				font-size: 20px;
-			}
-		}
-	}
-	.hamburger-overlay.active {
-		display: flex;
 	}
 }
 @media (max-width: 1024px) {
