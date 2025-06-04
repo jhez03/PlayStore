@@ -8,7 +8,7 @@
   \***********************************/
 /***/ ((module) => {
 
-module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/block-hero","version":"0.1.0","title":"Playstore Hero","category":"widgets","icon":"smiley","description":"Block for displaying a hero section with a Playstore link.","example":{},"supports":{"html":false},"attributes":{"backgroundType":{"type":"string","default":"image"},"backgroundUrl":{"type":"string"},"backgroundId":{"type":"number"},"headline":{"type":"string","source":"html","selector":"h1"},"subheadline":{"type":"string","source":"html","selector":"p"},"buttonText":{"type":"string","source":"html","selector":"span"}},"textdomain":"block-playstore","editorScript":"file:./index.js","editorStyle":"file:./index.css","style":"file:./style-index.css","viewScript":"file:./view.js"}');
+module.exports = /*#__PURE__*/JSON.parse('{"$schema":"https://schemas.wp.org/trunk/block.json","apiVersion":3,"name":"create-block/block-hero","version":"0.1.0","title":"Playstore Hero","category":"widgets","icon":"smiley","description":"Block for displaying a hero section with a Playstore link.","example":{},"supports":{"html":false},"attributes":{"backgroundType":{"type":"string","default":"image"},"backgroundUrl":{"type":"string"},"backgroundId":{"type":"number"},"headline":{"type":"string","selector":"h1"},"subheadline":{"type":"string","selector":"p"},"buttonText":{"type":"string","selector":"span"},"buttonColor":{"type":"string"},"partners":{"type":"array","default":[],"items":{"type":"object","properties":{"type":{"type":"string"},"value":{"type":"string"},"darkValue":{"type":"string"},"style":{"type":"string"},"subValue":{"type":"string"}}}}},"textdomain":"block-playstore","editorScript":"file:./index.js","editorStyle":"file:./index.css","render":"file:./render.php","style":"file:./style-index.css","viewScript":"file:./view.js"}');
 
 /***/ }),
 
@@ -46,8 +46,34 @@ function Edit({
     backgroundId,
     headline,
     subheadline,
-    buttonText
+    buttonText,
+    buttonColor,
+    partners = []
   } = attributes;
+  const addPartner = () => {
+    setAttributes({
+      partners: [...partners, {
+        type: "text",
+        value: "",
+        subvalue: "",
+        style: "",
+        darkValue: ""
+      }]
+    });
+  };
+  const updatePartner = (idx, key, val) => {
+    const newPartners = [...partners];
+    newPartners[idx][key] = val;
+    setAttributes({
+      partners: newPartners
+    });
+  };
+  const removePartner = idx => {
+    const newPartners = partners.filter((_, i) => i !== idx);
+    setAttributes({
+      partners: newPartners
+    });
+  };
   const onSelectMedia = media => {
     setAttributes({
       backgroundUrl: media.url,
@@ -61,10 +87,24 @@ function Edit({
       backgroundId: undefined
     });
   };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Button Color", "your-textdomain"),
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.ColorPalette, {
+          value: buttonColor,
+          onChange: color => setAttributes({
+            buttonColor: color
+          })
+        })
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
+        title: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Partner Carousel Settings", "your-textdomain")
+      })
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
       ...(0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)(),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("section", {
         className: "relative h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden",
         children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
           className: "absolute inset-0",
@@ -85,7 +125,7 @@ function Edit({
               children: "No background selected"
             })
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "absolute inset-0 bg-black/20"
+            className: "absolute inset-0 bg-white/20"
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
               onSelect: onSelectMedia,
@@ -94,7 +134,7 @@ function Edit({
               render: ({
                 open
               }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "absolute top-4 left-4 z-10 flex space-x-2",
+                className: "absolute top-4 left-4 z-10 flex space-x-2 z-20",
                 children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
                   variant: "primary",
                   onClick: open,
@@ -110,13 +150,179 @@ function Edit({
           })]
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
           className: "relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center z-10",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
             className: "max-w-lg",
-            children: "Centered text"
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+              tagName: "h1",
+              className: "text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0e0d0f] mb-4",
+              value: headline,
+              onChange: value => setAttributes({
+                headline: value
+              }),
+              placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Add headline…", "your-textdomain"),
+              allowedFormats: ["core/bold", "core/italic"]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+              tagName: "p",
+              className: "text-base sm:text-lg text-[#0a090a] mb-6 sm:mb-8",
+              value: subheadline,
+              onChange: value => setAttributes({
+                subheadline: value
+              }),
+              placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Add subheadline…", "your-textdomain")
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+              style: buttonColor ? {
+                backgroundColor: buttonColor,
+                borderColor: buttonColor
+              } : {},
+              className: "text-white px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg font-semibold",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+                tagName: "span",
+                className: "inline-block",
+                value: buttonText,
+                onChange: value => setAttributes({
+                  buttonText: value
+                }),
+                placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Button label", "your-textdomain"),
+                allowedFormats: ["core/bold", "core/italic"]
+              })
+            })]
           })
         })]
-      })
-    })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+        className: "bg-[#ffffff] py-12",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+          className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+            className: "flex items-center justify-center space-x-12 opacity-60",
+            children: [partners.map((partner, idx) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+              style: {
+                position: "relative",
+                minWidth: 140
+              },
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Type", "your-textdomain"),
+                value: partner.type,
+                options: [{
+                  label: "Text",
+                  value: "text"
+                }, {
+                  label: "Image",
+                  value: "image"
+                }],
+                onChange: val => updatePartner(idx, "type", val)
+              }), partner.type === "text" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+                  tagName: "div",
+                  className: `text-2xl font-bold text-[#0a090a] ${partner.style}`,
+                  value: partner.value,
+                  onChange: value => updatePartner(idx, "value", value),
+                  placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Partner Name", "your-textdomain")
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
+                  tagName: "div",
+                  className: "text-sm",
+                  value: partner.subvalue,
+                  onChange: value => updatePartner(idx, "subvalue", value),
+                  placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Subtext (optional)", "your-textdomain")
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.SelectControl, {
+                  label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Style", "your-textdomain"),
+                  value: partner.style,
+                  options: [{
+                    label: "Normal",
+                    value: ""
+                  }, {
+                    label: "Italic",
+                    value: "italic"
+                  }],
+                  onChange: val => updatePartner(idx, "style", val)
+                })]
+              }), partner.type === "image" && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+                    onSelect: img => updatePartner(idx, "value", img.url),
+                    allowedTypes: ["image"],
+                    value: partner.value,
+                    render: ({
+                      open
+                    }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      style: {
+                        marginBottom: 8
+                      },
+                      children: [partner.value ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+                        src: partner.value,
+                        alt: "",
+                        style: {
+                          height: 40,
+                          width: "auto",
+                          marginBottom: 4,
+                          background: "#f3f3f3",
+                          borderRadius: 8
+                        }
+                      }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+                        onClick: open,
+                        isSmall: true,
+                        variant: "primary",
+                        children: partner.value ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Replace Light Logo", "your-textdomain") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Select Light Logo", "your-textdomain")
+                      })]
+                    })
+                  })
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
+                    onSelect: img => updatePartner(idx, "darkValue", img.url),
+                    allowedTypes: ["image"],
+                    value: partner.darkValue,
+                    render: ({
+                      open
+                    }) => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+                      children: [partner.darkValue ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
+                        src: partner.darkValue,
+                        alt: "",
+                        style: {
+                          height: 40,
+                          width: "auto",
+                          marginBottom: 4,
+                          background: "#222",
+                          borderRadius: 8
+                        }
+                      }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+                        onClick: open,
+                        isSmall: true,
+                        variant: "secondary",
+                        children: partner.darkValue ? (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Replace Dark Logo", "your-textdomain") : (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Select Dark Logo", "your-textdomain")
+                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("small", {
+                        style: {
+                          display: "block",
+                          color: "#666"
+                        },
+                        children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("(Shown in dark mode)", "your-textdomain")
+                      })]
+                    })
+                  })
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+                icon: "no",
+                label: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Remove Partner", "your-textdomain"),
+                onClick: () => removePartner(idx),
+                isSmall: true,
+                variant: "secondary",
+                style: {
+                  position: "absolute",
+                  top: 0,
+                  right: 0
+                }
+              })]
+            }, idx)), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.Button, {
+              onClick: addPartner,
+              variant: "primary",
+              style: {
+                height: 50,
+                alignSelf: "center"
+              },
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Add Partner", "your-textdomain")
+            })]
+          })
+        })
+      })]
+    })]
   });
 }
 
@@ -143,10 +349,9 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/blocks */ "@wordpress/blocks");
 /* harmony import */ var _wordpress_blocks__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _style_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.scss */ "./src/block-hero/style.scss");
+/* harmony import */ var _style_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./style.css */ "./src/block-hero/style.css");
 /* harmony import */ var _edit__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./edit */ "./src/block-hero/edit.js");
-/* harmony import */ var _save__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./save */ "./src/block-hero/save.js");
-/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./block.json */ "./src/block-hero/block.json");
+/* harmony import */ var _block_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./block.json */ "./src/block-hero/block.json");
 /**
  * Registers a new block provided a unique name and an object defining its behavior.
  *
@@ -168,7 +373,7 @@ __webpack_require__.r(__webpack_exports__);
  * Internal dependencies
  */
 
-
+// import save from "./save";
 
 
 /**
@@ -176,94 +381,19 @@ __webpack_require__.r(__webpack_exports__);
  *
  * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-registration/
  */
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_4__.name, {
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_0__.registerBlockType)(_block_json__WEBPACK_IMPORTED_MODULE_3__.name, {
   /**
    * @see ./edit.js
    */
-  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"],
-  /**
-   * @see ./save.js
-   */
-  save: _save__WEBPACK_IMPORTED_MODULE_3__["default"]
+  edit: _edit__WEBPACK_IMPORTED_MODULE_2__["default"]
 });
 
 /***/ }),
 
-/***/ "./src/block-hero/save.js":
-/*!********************************!*\
-  !*** ./src/block-hero/save.js ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ save)
-/* harmony export */ });
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/block-editor */ "@wordpress/block-editor");
-/* harmony import */ var _wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "react/jsx-runtime");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__);
-/**
- * React hook that is used to mark the block wrapper element.
- * It provides all the necessary props like the class name.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/packages/packages-block-editor/#useblockprops
- */
-
-
-/**
- * The save function defines the way in which the different attributes should
- * be combined into the final markup, which is then serialized by the block
- * editor into `post_content`.
- *
- * @see https://developer.wordpress.org/block-editor/reference-guides/block-api/block-edit-save/#save
- *
- * @return {Element} Element to render.
- */
-
-function save() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.Fragment, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      ..._wordpress_block_editor__WEBPACK_IMPORTED_MODULE_0__.useBlockProps.save(),
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "absolute inset-0",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "absolute inset-0 bg-black/20"
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-          className: "max-w-lg",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("h1", {
-            className: "text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0e0d0f] mb-4",
-            children: ["Holiday Sale! ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("span", {
-              className: "text-[#6f76c0]",
-              children: "30% off"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("br", {}), "for All Action Games"]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-            className: "text-base sm:text-lg text-[#0a090a] mb-6 sm:mb-8",
-            children: "Save Play Celebrate. Ends 1/17"
-          })]
-        })
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-        className: "absolute bottom-8 left-0 right-0 hidden lg:block",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-          className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
-            className: "flex items-center justify-center space-x-12 opacity-80"
-          })
-        })
-      })]
-    })
-  });
-}
-
-/***/ }),
-
-/***/ "./src/block-hero/style.scss":
-/*!***********************************!*\
-  !*** ./src/block-hero/style.scss ***!
-  \***********************************/
+/***/ "./src/block-hero/style.css":
+/*!**********************************!*\
+  !*** ./src/block-hero/style.css ***!
+  \**********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
