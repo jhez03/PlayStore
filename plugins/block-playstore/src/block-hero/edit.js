@@ -4,8 +4,9 @@ import {
 	RichText,
 	MediaUpload,
 	MediaUploadCheck,
+	InspectorControls,
 } from "@wordpress/block-editor";
-import { Button, IconButton } from "@wordpress/components";
+import { Button, IconButton, ColorPalette } from "@wordpress/components";
 
 import "./editor.scss";
 export default function Edit({ attributes, setAttributes }) {
@@ -16,6 +17,7 @@ export default function Edit({ attributes, setAttributes }) {
 		headline,
 		subheadline,
 		buttonText,
+		buttonColor,
 	} = attributes;
 
 	const onSelectMedia = (media) => {
@@ -34,6 +36,14 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 	return (
 		<>
+			<InspectorControls>
+				<PanelBody title={__("Button Color", "your-textdomain")}>
+					<ColorPalette
+						value={buttonColor}
+						onChange={(color) => setAttributes({ buttonColor: color })}
+					/>
+				</PanelBody>
+			</InspectorControls>
 			<div {...useBlockProps()}>
 				<section className="relative h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden">
 					<div className="absolute inset-0">
@@ -83,9 +93,41 @@ export default function Edit({ attributes, setAttributes }) {
 							/>
 						</MediaUploadCheck>
 					</div>
-
 					<div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center z-10">
-						<div className="max-w-lg">Centered text</div>
+						<div className="max-w-lg">
+							<RichText
+								tagName="h1"
+								className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0e0d0f] mb-4"
+								value={headline}
+								onChange={(value) => setAttributes({ headline: value })}
+								placeholder={__("Add headline…", "your-textdomain")}
+								allowedFormats={["core/bold", "core/italic"]}
+							/>
+							<RichText
+								tagName="p"
+								className="text-base sm:text-lg text-[#0a090a] mb-6 sm:mb-8"
+								value={subheadline}
+								onChange={(value) => setAttributes({ subheadline: value })}
+								placeholder={__("Add subheadline…", "your-textdomain")}
+							/>
+							<Button
+								style={
+									buttonColor
+										? { backgroundColor: buttonColor, borderColor: buttonColor }
+										: {}
+								}
+								className="text-white px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg font-semibold"
+							>
+								<RichText
+									tagName="span"
+									className="inline-block"
+									value={buttonText}
+									onChange={(value) => setAttributes({ buttonText: value })}
+									placeholder={__("Button label", "your-textdomain")}
+									allowedFormats={["core/bold", "core/italic"]}
+								/>
+							</Button>
+						</div>
 					</div>
 				</section>
 			</div>

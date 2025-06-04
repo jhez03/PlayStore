@@ -36,6 +36,9 @@
       "type": "string",
       "source": "html",
       "selector": "span"
+    },
+    "buttonColor": {
+      "type": "string"
     }
   },
   "textdomain": "block-playstore",

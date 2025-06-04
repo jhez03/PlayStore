@@ -85,6 +85,9 @@ return array(
 				'type' => 'string',
 				'source' => 'html',
 				'selector' => 'span'
+			),
+			'buttonColor' => array(
+				'type' => 'string'
 			)
 		),
 		'textdomain' => 'block-playstore',

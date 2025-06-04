@@ -17,7 +17,8 @@
 		"backgroundId": { "type": "number" },
 		"headline": { "type": "string", "source": "html", "selector": "h1" },
 		"subheadline": { "type": "string", "source": "html", "selector": "p" },
-		"buttonText": { "type": "string", "source": "html", "selector": "span" }
+		"buttonText": { "type": "string", "source": "html", "selector": "span" },
+		"buttonColor": { "type": "string" }
 	},
 	"textdomain": "block-playstore",
 	"editorScript": "file:./index.js",
