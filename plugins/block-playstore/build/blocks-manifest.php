@@ -73,26 +73,50 @@ return array(
 			),
 			'headline' => array(
 				'type' => 'string',
-				'source' => 'html',
 				'selector' => 'h1'
 			),
 			'subheadline' => array(
 				'type' => 'string',
-				'source' => 'html',
 				'selector' => 'p'
 			),
 			'buttonText' => array(
 				'type' => 'string',
-				'source' => 'html',
 				'selector' => 'span'
 			),
 			'buttonColor' => array(
 				'type' => 'string'
+			),
+			'partners' => array(
+				'type' => 'array',
+				'default' => array(
+					
+				),
+				'items' => array(
+					'type' => 'object',
+					'properties' => array(
+						'type' => array(
+							'type' => 'string'
+						),
+						'value' => array(
+							'type' => 'string'
+						),
+						'darkValue' => array(
+							'type' => 'string'
+						),
+						'style' => array(
+							'type' => 'string'
+						),
+						'subValue' => array(
+							'type' => 'string'
+						)
+					)
+				)
 			)
 		),
 		'textdomain' => 'block-playstore',
 		'editorScript' => 'file:./index.js',
 		'editorStyle' => 'file:./index.css',
+		'render' => 'file:./render.php',
 		'style' => 'file:./style-index.css',
 		'viewScript' => 'file:./view.js'
 	),

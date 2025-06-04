@@ -1,0 +1,9 @@
+@layer theme, base, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@custom-variant dark (&:where(.dark, .dark-mode-playstore *));
+.wp-block-create-block-block-hero {
+	@import "tailwindcss/preflight.css" layer(base);
+	@import "tailwindcss/utilities.css" layer(utilities);
+	margin-block-start: 0 !important;
+}
