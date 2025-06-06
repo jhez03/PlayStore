@@ -1,6 +1,37 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
+	'block-games-line' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'create-block/block-games-line',
+		'version' => '0.1.1',
+		'title' => 'Playstore Games Line',
+		'category' => 'gamestore',
+		'icon' => 'layout',
+		'description' => 'A block to display a line of games from the Playstore.',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false,
+			'innerBlocks' => true
+		),
+		'attribues' => array(
+			'games' => array(
+				'type' => 'array',
+				'default' => array(
+					
+				)
+			)
+		),
+		'textdomain' => 'block-playstore',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'render' => 'file:./render.php',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
+	),
 	'block-header' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
