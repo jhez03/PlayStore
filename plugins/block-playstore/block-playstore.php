@@ -16,6 +16,9 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
+foreach (glob( plugin_dir_path( __FILE__ ) . 'core/*.php' ) as $file) {
+	require_once $file;
+}
 add_filter(
 	'block_categories_all',
 	function ( $categories ) {
