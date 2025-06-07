@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/block-news",
+  "version": "0.1.1",
+  "title": "Playstore News",
+  "category": "gamestore",
+  "icon": "layout",
+  "description": "A block to display news from the Playstore.",
+  "example": {},
+  "supports": {
+    "html": false,
+    "innerBlocks": true
+  },
+  "attributes": {
+    "newsCount": {
+      "type": "number",
+      "default": 3
+    },
+    "header": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "backgroundUrl": {
+      "type": "string"
+    }
+  },
+  "textdomain": "block-playstore",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "render": "file:./render.php",
+  "style": "file:./style-index.css"
+}

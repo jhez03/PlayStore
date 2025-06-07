@@ -10,7 +10,7 @@ add_action(
 	function () {
 
 		register_rest_route(
-			'jeswin/v1',
+			'playstore/v1',
 			'/search-posts',
 			array(
 				'methods'             => 'GET',
@@ -20,11 +20,11 @@ add_action(
 		);
 
 		register_rest_route(
-			'jeswin/v1',
-			'/custom-data',
+			'playstore/v1',
+			'/news',
 			array(
 				'methods'             => 'GET',
-				'callback'            => 'jeswin_handle_custom_data',
+				'callback'            => 'playstore_recent_news',
 				'permission_callback' => '__return_true',
 			)
 		);
@@ -33,26 +33,42 @@ add_action(
 
 // Handlers
 
-function jeswin_handle_search_posts( $request ) {
-	$query = sanitize_text_field( $request->get_param( 'q' ) );
-
-	$posts = get_posts(
-		array(
-			's'              => $query,
-			'post_type'      => 'post',
-			'posts_per_page' => 10,
-		)
+function playstore_recent_news( $args = array() ) {
+	$default_args = array(
+		'post_type'      => 'news',
+		'posts_per_page' => 3,
+		'post_status'    => 'publish',
+		'orderby'        => 'date',
+		'order'          => 'DESC',
 	);
+	$query_args   = wp_parse_args( $args, $default_args );
+	$query        = new WP_Query( $query_args );
 
-	return rest_ensure_response( $posts );
+	$news_posts = array();
+
+	while ($query->have_posts()) {
+		$query->the_post();
+
+		$news_posts[] = array(
+			'id'          => get_the_ID(),
+			'title'       => get_the_title(),
+			'url'         => get_permalink(),
+			'thumbnail'   => get_the_post_thumbnail_url( get_the_ID(), 'medium' ),
+			'date'        => get_the_date(),
+			'excerpt'     => wp_strip_all_tags( get_the_excerpt() ),
+			'short_title' => html_entity_decode( wp_trim_words( get_the_title(), 10, '...' ), ENT_QUOTES, 'UTF-8' ),
+		);
+	}
+
+	return rest_ensure_response( $news_posts );
 }
 
-function jeswin_handle_custom_data( $request ) {
-	return array(
-		'status' => 'success',
-		'data'   => array(
-			'message'   => 'Custom REST response',
-			'timestamp' => time(),
-		),
-	);
-}
+// function jeswin_handle_custom_data( $request ) {
+//  return array(
+//      'status' => 'success',
+//      'data'   => array(
+//          'message'   => 'Custom REST response',
+//          'timestamp' => time(),
+//      ),
+//  );
+// }

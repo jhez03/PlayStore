@@ -64,7 +64,7 @@ export default function Edit({ attributes, setAttributes }) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={__("Button Color", "your-textdomain")}>
+				<PanelBody title={__("Button Color", "block-playstore")}>
 					<ColorPalette
 						value={buttonColor}
 						onChange={(color) => setAttributes({ buttonColor: color })}
@@ -72,7 +72,7 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<InspectorControls>
-				<PanelBody title={__("Partner Carousel Settings", "your-textdomain")} />
+				<PanelBody title={__("Partner Carousel Settings", "block-playstore")} />
 			</InspectorControls>
 			<div {...useBlockProps()}>
 				<section className="relative h-[400px] sm:h-[500px] lg:h-[600px] overflow-hidden">
@@ -108,13 +108,13 @@ export default function Edit({ attributes, setAttributes }) {
 									<div className="absolute top-4 left-4 z-10 flex space-x-2 z-20">
 										<Button variant="primary" onClick={open} size="small">
 											{backgroundUrl
-												? __("Replace Background", "your-textdomain")
-												: __("Select Background", "your-textdomain")}
+												? __("Replace Background", "block-playstore")
+												: __("Select Background", "block-playstore")}
 										</Button>
 										{backgroundUrl && (
 											<IconButton
 												icon="dismiss"
-												label={__("Remove Background", "your-textdomain")}
+												label={__("Remove Background", "block-playstore")}
 												onClick={removeMedia}
 											/>
 										)}
@@ -130,7 +130,7 @@ export default function Edit({ attributes, setAttributes }) {
 								className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#0e0d0f] mb-4"
 								value={headline}
 								onChange={(value) => setAttributes({ headline: value })}
-								placeholder={__("Add headline…", "your-textdomain")}
+								placeholder={__("Add headline…", "block-playstore")}
 								allowedFormats={["core/bold", "core/italic"]}
 							/>
 							<RichText
@@ -138,7 +138,7 @@ export default function Edit({ attributes, setAttributes }) {
 								className="text-base sm:text-lg text-[#0a090a] mb-6 sm:mb-8"
 								value={subheadline}
 								onChange={(value) => setAttributes({ subheadline: value })}
-								placeholder={__("Add subheadline…", "your-textdomain")}
+								placeholder={__("Add subheadline…", "block-playstore")}
 							/>
 							<Button
 								style={
@@ -153,7 +153,7 @@ export default function Edit({ attributes, setAttributes }) {
 									className="inline-block"
 									value={buttonText}
 									onChange={(value) => setAttributes({ buttonText: value })}
-									placeholder={__("Button label", "your-textdomain")}
+									placeholder={__("Button label", "block-playstore")}
 									allowedFormats={["core/bold", "core/italic"]}
 								/>
 							</Button>
@@ -166,7 +166,7 @@ export default function Edit({ attributes, setAttributes }) {
 							{partners.map((partner, idx) => (
 								<div key={idx} style={{ position: "relative", minWidth: 140 }}>
 									<SelectControl
-										label={__("Type", "your-textdomain")}
+										label={__("Type", "block-playstore")}
 										value={partner.type}
 										options={[
 											{ label: "Text", value: "text" },
@@ -181,7 +181,7 @@ export default function Edit({ attributes, setAttributes }) {
 												className={`text-2xl font-bold text-[#0a090a] ${partner.style}`}
 												value={partner.value}
 												onChange={(value) => updatePartner(idx, "value", value)}
-												placeholder={__("Partner Name", "your-textdomain")}
+												placeholder={__("Partner Name", "block-playstore")}
 											/>
 											<RichText
 												tagName="div"
@@ -192,11 +192,11 @@ export default function Edit({ attributes, setAttributes }) {
 												}
 												placeholder={__(
 													"Subtext (optional)",
-													"your-textdomain",
+													"block-playstore",
 												)}
 											/>
 											<SelectControl
-												label={__("Style", "your-textdomain")}
+												label={__("Style", "block-playstore")}
 												value={partner.style}
 												options={[
 													{ label: "Normal", value: "" },
@@ -232,8 +232,8 @@ export default function Edit({ attributes, setAttributes }) {
 															) : null}
 															<Button onClick={open} isSmall variant="primary">
 																{partner.value
-																	? __("Replace Light Logo", "your-textdomain")
-																	: __("Select Light Logo", "your-textdomain")}
+																	? __("Replace Light Logo", "block-playstore")
+																	: __("Select Light Logo", "block-playstore")}
 															</Button>
 														</div>
 													)}
@@ -267,13 +267,13 @@ export default function Edit({ attributes, setAttributes }) {
 																variant="secondary"
 															>
 																{partner.darkValue
-																	? __("Replace Dark Logo", "your-textdomain")
-																	: __("Select Dark Logo", "your-textdomain")}
+																	? __("Replace Dark Logo", "block-playstore")
+																	: __("Select Dark Logo", "block-playstore")}
 															</Button>
 															<small
 																style={{ display: "block", color: "#666" }}
 															>
-																{__("(Shown in dark mode)", "your-textdomain")}
+																{__("(Shown in dark mode)", "block-playstore")}
 															</small>
 														</div>
 													)}
@@ -283,7 +283,7 @@ export default function Edit({ attributes, setAttributes }) {
 									)}
 									<Button
 										icon="no"
-										label={__("Remove Partner", "your-textdomain")}
+										label={__("Remove Partner", "block-playstore")}
 										onClick={() => removePartner(idx)}
 										isSmall
 										variant="secondary"
@@ -296,7 +296,7 @@ export default function Edit({ attributes, setAttributes }) {
 								variant="primary"
 								style={{ height: 50, alignSelf: "center" }}
 							>
-								{__("Add Partner", "your-textdomain")}
+								{__("Add Partner", "block-playstore")}
 							</Button>
 						</div>
 					</div>
