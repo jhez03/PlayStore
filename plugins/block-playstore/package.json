@@ -5,19 +5,19 @@
 	"author": "The WordPress Contributors",
 	"license": "GPL-2.0-or-later",
 	"main": "build/index.js",
-  "scripts": {
-    "tailwindbuild": "node scripts/build-blocks.js",
-    "tailwindwatch": "node scripts/build-blocks.js --watch",
-    "wpbuild": "wp-scripts build --blocks-manifest",
-    "build": "npm-run-all --sequential wpbuild tailwindbuild",
-    "wpstart": "wp-scripts start --blocks-manifest",
-    "start": "npm-run-all --parallel wpstart tailwindwatch",
-    "format": "wp-scripts format",
-    "lint:css": "wp-scripts lint-style",
-    "lint:js": "wp-scripts lint-js",
-    "packages-update": "wp-scripts packages-update",
-    "plugin-zip": "wp-scripts plugin-zip"
-  },
+	"scripts": {
+		"tailwindbuild": "node scripts/build-blocks.js",
+		"tailwindwatch": "node scripts/build-blocks.js --watch",
+		"wpbuild": "wp-scripts build --blocks-manifest",
+		"build": "npm-run-all --sequential wpbuild tailwindbuild",
+		"wpstart": "wp-scripts start --blocks-manifest",
+		"start": "npm-run-all --parallel wpstart tailwindwatch",
+		"format": "wp-scripts format",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"packages-update": "wp-scripts packages-update",
+		"plugin-zip": "wp-scripts plugin-zip"
+	},
 	"devDependencies": {
 		"@tailwindcss/cli": "^4.1.8",
 		"@wordpress/scripts": "^30.17.0",
@@ -30,6 +30,7 @@
 		"@wordpress/components": "^29.10.0",
 		"@wordpress/data": "^10.24.0",
 		"@wordpress/element": "^6.24.0",
+		"@wordpress/rich-text": "^7.25.0",
 		"swiper": "^11.2.8"
 	}
 }

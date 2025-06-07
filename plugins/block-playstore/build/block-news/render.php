@@ -65,7 +65,7 @@ $news_query = Playstore_General::get_news(
 					<div class="">
 						<image class="w-[481px] " src="<?php echo $news['thumbnail']; ?>" alt="Ubisoft Classics Games" />
 					</div>
-					<p class="text-[var(--text-secondary)] px-[48px] py-[24px] text-[20px] font-[400] ">
+					<p class="text-[var(--wp--preset--color--text-secondary)] px-[48px] py-[24px] text-[20px] font-[400] ">
 						<?php echo esc_html( $news['excerpt'] ); ?>
 					</p>
 					<div class="pb-[48px] flex justify-center" >

@@ -1,0 +1,44 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "create-block/block-subscribe",
+	"version": "0.1.0",
+	"title": "Playstore Subscribe",
+	"category": "widgets",
+	"icon": "smiley",
+	"description": "A block that allows users to subscribe to a newsletter.",
+	"example": {},
+	"supports": {
+		"html": false
+	},
+	"attributes": {
+		"backgroundUrl": {
+			"type": "string"
+		},
+		"shortCode": {
+			"type": "string"
+		},
+		"title": {
+			"type": "string",
+			"default": "Subscribe to our newsletter"
+		},
+		"description": {
+			"type": "string",
+			"default": "Get the latest updates and offers directly in your inbox."
+		},
+		"headingColor": {
+			"type": "string",
+			"default": ""
+		},
+		"descriptionColor": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"textdomain": "block-playstore",
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css",
+	"render": "file:./render.php",
+	"style": "file:./style-index.css",
+	"viewScript": "file:./view.js"
+}

@@ -208,5 +208,51 @@ return array(
 		'editorStyle' => 'file:./index.css',
 		'style' => 'file:./style-index.css',
 		'viewScript' => 'file:./view.js'
+	),
+	'block-subscribe' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'create-block/block-subscribe',
+		'version' => '0.1.0',
+		'title' => 'Playstore Subscribe',
+		'category' => 'widgets',
+		'icon' => 'smiley',
+		'description' => 'A block that allows users to subscribe to a newsletter.',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'attributes' => array(
+			'backgroundUrl' => array(
+				'type' => 'string'
+			),
+			'shortCode' => array(
+				'type' => 'string'
+			),
+			'title' => array(
+				'type' => 'string',
+				'default' => 'Subscribe to our newsletter'
+			),
+			'description' => array(
+				'type' => 'string',
+				'default' => 'Get the latest updates and offers directly in your inbox.'
+			),
+			'headingColor' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'descriptionColor' => array(
+				'type' => 'string',
+				'default' => ''
+			)
+		),
+		'textdomain' => 'block-playstore',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'render' => 'file:./render.php',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
 	)
 );
