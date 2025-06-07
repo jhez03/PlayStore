@@ -76,7 +76,7 @@ export default function Edit({ attributes, setAttributes }) {
 					)}
 					<div className="section-mask absolute inset-0" />
 
-					<div className="absolute inset-0 flex flex-col item-center gap-[48px]  px-[190px]">
+					<div className="absolute inset-0 flex flex-col item-center gap-[48px]  xl:py-[120px]">
 						<MediaUploadCheck>
 							<MediaUpload
 								onSelect={onSelectImage}
