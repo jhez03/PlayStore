@@ -7,7 +7,12 @@ module.exports = {
 	],
 	darkMode: "class",
 	theme: {
-		extend: {},
+		extend: {
+			colors: {
+				"blue-main": "var(--wp-preset--color--blue-main)",
+				"purple-main": "var(--wp-preset--color--purple-main)",
+			},
+		},
 	},
 	plugins: [],
 };

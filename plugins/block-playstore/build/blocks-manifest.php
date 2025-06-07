@@ -151,6 +151,43 @@ return array(
 		'style' => 'file:./style-index.css',
 		'viewScript' => 'file:./view.js'
 	),
+	'block-news' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'create-block/block-news',
+		'version' => '0.1.1',
+		'title' => 'Playstore News',
+		'category' => 'gamestore',
+		'icon' => 'layout',
+		'description' => 'A block to display news from the Playstore.',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false,
+			'innerBlocks' => true
+		),
+		'attributes' => array(
+			'newsCount' => array(
+				'type' => 'number',
+				'default' => 3
+			),
+			'header' => array(
+				'type' => 'string'
+			),
+			'description' => array(
+				'type' => 'string'
+			),
+			'backgroundUrl' => array(
+				'type' => 'string'
+			)
+		),
+		'textdomain' => 'block-playstore',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'render' => 'file:./render.php',
+		'style' => 'file:./style-index.css'
+	),
 	'block-playstore' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
