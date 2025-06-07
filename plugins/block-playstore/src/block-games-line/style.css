@@ -1,0 +1,20 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@custom-variant dark (&:where(.dark, .dark-mode-playstore *));
+.wp-block-create-block-block-games-line {
+	@import "tailwindcss/preflight.css" layer(base);
+	@import "tailwindcss/utilities.css" layer(utilities);
+	margin-block-start: 0;
+}
+@keyframes scrollX {
+	0% {
+		transform: translateX(0%);
+	}
+	100% {
+		transform: translateX(-50%);
+	}
+}
+
+.animate-infinite-scroll {
+	animation: scrollX 30s linear infinite;
+}
