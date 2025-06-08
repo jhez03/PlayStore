@@ -114,6 +114,7 @@ a {
   --wp--preset--color--text-primary: rgba(255, 255, 255, 1);
   --wp--preset--color--divider-input: rgba(255, 255, 255, 0.24);
   --wp--preset--color--svg-main: rgba(255, 255, 255, 0.64);
+  --wp--preset--color--background-80: rgba(14, 13, 15, 0.8);
   --action-main: rgba(255, 255, 255, 0.64);
   --divider-main: rgba(255, 255, 255, 0.12);
   --text-primary: #ffffff;
@@ -121,19 +122,22 @@ a {
   --white-contrast: #ffffff;
   --wp--preset--color--base: #0e0d0f;
   --wp--preset--color--contrast: #ffffff;
-  --background-80: rgba(14, 13, 15, 0.8);
   --shadow-24: rgba(0, 0, 0, 0.64);
 }
 
 body {
   font-family: Urbanist;
   font-style: normal;
+  background: var(--wp--preset--gradient--section-mask);
 }
 .main-gradient {
   background: var(--wp--preset--gradient--main-gradient);
 }
 .section-mask {
   background: var(--wp--preset--gradient--section-mask);
+}
+.background-mask {
+  background: var(--wp--preset--gradient--background-mask);
 }
 .repeater-mask {
   background: var(--wp--preset--gradient--repeater-mask);

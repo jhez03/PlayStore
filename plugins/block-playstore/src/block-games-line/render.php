@@ -1,13 +1,17 @@
 <?php
-require_once plugin_dir_path( __DIR__ ) . '/../core/playstore_woocommerce.php';
 
-$products = Playstore_WooCommerce::get_products(
+$products    = Playstore_WooCommerce::get_products(
 	array(
 		'posts_per_page' => 12,
 	)
 );
+$block_props = get_block_wrapper_attributes(
+	array(
+		'class' => 'background-mask section-mask',
+	)
+)
 ?>
-<div class = 'wp-block-create-block-block-games-line' >
+<section <?php echo $block_props; ?>>
 	<div class="games-line-swiper">
 		<div class="swiper-wrapper flex gap-[8px] py-[8px] items-start">
 			<?php foreach ($products as $game) : ?>
@@ -29,4 +33,4 @@ $products = Playstore_WooCommerce::get_products(
 		</div>
 		</div>
 	<!-- Slider main container -->
-</div>
+</section>
