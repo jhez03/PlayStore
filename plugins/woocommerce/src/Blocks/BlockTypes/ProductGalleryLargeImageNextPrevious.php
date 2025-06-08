@@ -130,7 +130,7 @@ class ProductGalleryLargeImageNextPrevious extends AbstractBlock {
 				<svg xmlns="http://www.w3.org/2000/svg" width="49" height="48" viewBox="0 0 49 48" fill="none">
 					<g filter="url(#filter0_b_397_11354)">
 						<rect x="0.5" width="48" height="48" rx="5" fill="black" fill-opacity="0.5"/>
-						<path d="%3$s" fill="white"/>
+						<path d="%3$s" fill="var(--wp--preset--color--svg-main)"/>
 					</g>
 					<defs>
 						<filter id="filter0_b_397_11354" x="-9.5" y="-10" width="68" height="68" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">

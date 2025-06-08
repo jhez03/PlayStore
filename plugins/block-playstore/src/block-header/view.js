@@ -52,9 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
 		const toggle = e.target.closest(".playstore-submenu-toggle");
 		const menuItem = e.target.closest(".menu-item-has-children");
 		// Toggle submenu
-		if (toggle && menuItem) {
+		if (toggle || menuItem) {
 			e.preventDefault();
-			const isExpanded = toggle.getAttribute("aria-expanded") === "true";
+			const targetMenuItem =
+				menuItem || toggle.closest(".menu-item-has-children");
+			const targetToggle =
+				toggle || targetMenuItem.querySelector(".playstore-submenu-toggle");
+			const isExpanded = targetToggle.getAttribute("aria-expanded") === "true";
 
 			// Close all other submenus
 			document
@@ -68,8 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
 				});
 
 			// Open this one if it wasn't already
-			toggle.setAttribute("aria-expanded", (!isExpanded).toString());
-			const submenu = menuItem.querySelector(".sub-menu");
+			targetToggle.setAttribute("aria-expanded", (!isExpanded).toString());
+			const submenu = targetMenuItem.querySelector(".sub-menu");
 			submenu?.classList.toggle("visible", !isExpanded);
 		}
 
