@@ -14,6 +14,5 @@ document.addEventListener("DOMContentLoaded", () => {
 		grabCursor: true,
 		mousewheelControl: true,
 		keyboardControl: true,
-		spaceBetween: 8,
 	});
 });
