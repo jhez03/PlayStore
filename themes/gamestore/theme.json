@@ -14,11 +14,21 @@
           "color": "rgba(111, 118, 192, 1)",
           "name": "Purple Main"
         },
+        {
+          "slug": "blue-48",
+          "color": "rgba(61, 175, 226, 0.48)",
+          "name": "Blue 48"
+        },
         { "slug": "blue-main", "color": "#3dafe2", "name": "Blue Main" },
         {
           "slug": "secondary-0",
-          "color": "rgba(250, 250, 250, 0)",
+          "color": "rgba(14, 13, 15, 0)",
           "name": "Secondary 0"
+        },
+        {
+          "slug": "secondary-mask",
+          "color": "rgba(236, 236, 236, 1)",
+          "name": "Secondary Mask"
         },
         {
           "slug": "secondary-main",
@@ -51,6 +61,11 @@
           "name": "White Main"
         },
         {
+          "slug": "background-0",
+          "color": "rgba(255, 255, 255, 0)",
+          "name": "Background 0"
+        },
+        {
           "slug": "text-gradient",
           "color": "linear-gradient(90deg, var(--wp--preset--color--blue-main) 0%, var(--wp--preset--color--purple-main) 100%)",
           "name": "Text Gradient"
@@ -63,9 +78,14 @@
           "gradient": "linear-gradient(90deg, var(--wp--preset--color--blue-main) 0%, var(--wp--preset--color--purple-main) 100%)"
         },
         {
-          "slug": "subscribe-mask",
-          "name": "Subscribe Mask",
-          "gradient": "linear-gradient(270deg, var(--wp--preset--color--secondary-0, rgba(250, 250, 250, 0.00)) 0%, var(--wp--preset--color--secondary-main, #FAFAFA) 79.5%);"
+          "slug": "section-mask",
+          "name": "Section Mask",
+          "gradient": "linear-gradient(270deg, var(--wp--preset--color--secondary-0, rgba(14, 13, 15, 0.00)) 0%, var(--wp--preset--color--secondary-mask) 79.5%)"
+        },
+        {
+          "slug": "repeater-mask",
+          "name": "Repeater Mask",
+          "gradient": "linear-gradient(270deg, var(--wp--preset--color--background-0, rgba(250, 250, 250, 0.00)) 0%, var(--wp--preset--color--background-default, #FAFAFA) 100%);"
         }
       ]
     },

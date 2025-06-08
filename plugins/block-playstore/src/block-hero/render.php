@@ -6,6 +6,7 @@
  * @param string $content    The block content.
  * @param WP_Block $block    The block instance.
  * @return string Block HTML.
+ * @var array $attributes
  */
 
 $backgroundType = isset( $attributes['backgroundType'] ) ? $attributes['backgroundType'] : 'image';
@@ -20,12 +21,13 @@ if ( ! empty( $buttonColor ) ) {
 	$button_style = 'background-color:' . esc_attr( $buttonColor ) . ';border-color:' . esc_attr( $buttonColor ) . ';';
 }
 
-$blockProps = get_block_wrapper_attributes();
+$blockProps = get_block_wrapper_attributes(
+);
 ?>
 
-<div <?php echo $blockProps; ?>>
-	<section class="relative h-[1031px] overflow-hidden">
-		<div class="playstore-hero absolute inset-0 z-0">
+<section <?php echo $blockProps; ?>>
+	<div class="relative  overflow-hidden">
+		<div class="absolute inset-0 z-0">
 			<?php if ( ! empty( $backgroundUrl ) ) : ?>
 				<?php if ( $backgroundType === 'video' ) : ?>
 					<video
@@ -47,12 +49,12 @@ $blockProps = get_block_wrapper_attributes();
 					<span class="text-gray-500"><?php esc_html_e( 'No background selected', 'your-textdomain' ); ?></span>
 				</div>
 			<?php endif; ?>
-			<div class="absolute inset-0 z-10 bg-[linear-gradient(270deg,_var(--secondary-0,_rgba(14,_13,_15,_0))_0%,_#ECECEC_79.5%)] dark:bg-[linear-gradient(270deg,_var(--background-0,_rgba(14,_13,_15,_0))_0%,_#0D0B0F_79.5%)]  "></div>
+			<div class="absolute inset-0 z-10 section-mask"></div>
 		</div>
-		<div class="playstore-hero-content relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-			<div class="max-w-lg">
+		<div class="max-lg:mx-20 max-lg:my-50 max-sm:my-30 max-sm:mx-10 my-[390px] mx-[190px] relative  h-full ">
+			<div>
 				<?php if ( ! empty( $headline ) ) : ?>
-					<h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-[var(--text-primary)] mb-4">
+					<h1 class="text-3xl sm:text-4xl lg:text-[64px] font-bold text-[var(--wp--preset--color--text-primary)] ">
 						<?php echo wp_kses_post( $headline ); ?>
 					</h1>
 				<?php endif; ?>
@@ -64,17 +66,17 @@ $blockProps = get_block_wrapper_attributes();
 				<button
 					type="button"
 					style="<?php echo esc_attr( $button_style ); ?>"
-					class="text-white px-6 sm:px-8 py-2 sm:py-3 text-base sm:text-lg font-semibold"
+					class="text-white main-gradient shadow-button rounded-[5px] px-[32px] sm:px-8 py-[20px] sm:py-3 text-base sm:text-lg font-semibold"
 				>
 					<span class="inline-block">
 						<?php echo wp_kses_post( $buttonText ); ?>
 					</span>
 				</button>
-			</div>
+				</div>
 		</div>
-		<div class="playstore-hero-logos z-11 absolute px-[190px] w-full px-[51px] py-[51px] bottom-0 h-[150px] bg-[linear-gradient(270deg,_var(--background-0,_rgba(250,_250,_250,_0.00))_0%,_var(--background-default,_#FAFAFA)_100%)] dark:bg-[linear-gradient(270deg,_var(--background-0,_rgba(14,_13,_15,_0))_0%,_#0D0B0F_100%)]">
-			<div class="playstore-partners swiper partner-swiper">
-				<div class="flex swiper-wrapper items-center justify-between">
+		<div class="relative max-xl:px-20 max-lg:py-10 max-lg:px-5 max-sm:py-5 px-[190px] py-[51px]  bottom-0 ">
+			<div class="z-2 relative partner-swiper">
+				<div class="flex swiper-wrapper items-center justify-between ">
 					<?php foreach ( $partners as $partner ) : ?>
 						<?php if ( isset( $partner['type'] ) && $partner['type'] === 'text' ) : ?>
 					<div class="text-2xl font-bold text-[#0a090a] <?php echo isset( $partner['style'] ) ? esc_attr( $partner['style'] ) : ''; ?>">
@@ -89,7 +91,7 @@ $blockProps = get_block_wrapper_attributes();
 						// Normal logo (light mode)
 						if ( ! empty( $partner['value'] ) ) :
 							?>
-							<div class="flex swiper-slide items-center justify-between dark:hidden">
+							<div class="swiper-slide items-center justify-between dark:hidden">
 								<img
 									src="<?php echo esc_url( $partner['value'] ); ?>"
 									alt=""
@@ -99,7 +101,7 @@ $blockProps = get_block_wrapper_attributes();
 						<?php
 						if ( ! empty( $partner['darkValue'] ) ) :
 							?>
-							<div class="flex swiper-slide items-center justify-between hidden dark:inline-block">
+							<div class="swiper-slide items-center justify-between hidden dark:inline-block">
 								<img
 									src="<?php echo esc_url( $partner['darkValue'] ); ?>"
 									alt=""
@@ -110,6 +112,7 @@ $blockProps = get_block_wrapper_attributes();
 				<?php endforeach; ?>
 					</div>
 			</div>
+			<div class="absolute inset-0 z-0 repeater-mask"></div>
 		</div>
-	</section>
-</div>
+	</div>
+</section>
