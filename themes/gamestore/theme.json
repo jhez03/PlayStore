@@ -5,23 +5,74 @@
       "palette": [
         {
           "slug": "background-default",
-          "color": "#FAFAFA",
+          "color": "rgba(250, 250, 250, 1)",
           "name": "Background Default"
         },
         { "slug": "action-main", "color": "#0e0d0f", "name": "Action Main" },
-        { "slug": "purple-main", "color": "#6f76c0", "name": "Purple Main" },
-        { "slug": "blue-main", "color": "#3dafe2", "name": "Blue Main" }
+        {
+          "slug": "purple-main",
+          "color": "rgba(111, 118, 192, 1)",
+          "name": "Purple Main"
+        },
+        { "slug": "blue-main", "color": "#3dafe2", "name": "Blue Main" },
+        {
+          "slug": "secondary-0",
+          "color": "rgba(250, 250, 250, 0)",
+          "name": "Secondary 0"
+        },
+        {
+          "slug": "secondary-main",
+          "color": "rgba(250, 250, 250, 1)",
+          "name": "Secondary Main"
+        },
+        {
+          "slug": "text-secondary",
+          "color": "rgba(14, 13, 15, 0.7)",
+          "name": "Text Secondary"
+        },
+        {
+          "slug": "text-primary",
+          "color": "rgba(14, 13, 15, 0.7)",
+          "name": "Text Primary"
+        },
+        {
+          "slug": "svg-main",
+          "color": "rgba(14, 13, 15, 0.64)",
+          "name": "Svg Main"
+        },
+        {
+          "slug": "divider-input",
+          "color": "rgba(14, 13, 15, 0.24)",
+          "name": "Divider Input"
+        },
+        {
+          "slug": "white-main",
+          "color": "rgba(255, 255, 255, 1)",
+          "name": "White Main"
+        },
+        {
+          "slug": "text-gradient",
+          "color": "linear-gradient(90deg, var(--wp--preset--color--blue-main) 0%, var(--wp--preset--color--purple-main) 100%)",
+          "name": "Text Gradient"
+        }
       ],
       "gradients": [
         {
           "slug": "main-gradient",
           "name": "Main Gradient",
           "gradient": "linear-gradient(90deg, var(--wp--preset--color--blue-main) 0%, var(--wp--preset--color--purple-main) 100%)"
+        },
+        {
+          "slug": "subscribe-mask",
+          "name": "Subscribe Mask",
+          "gradient": "linear-gradient(270deg, var(--wp--preset--color--secondary-0, rgba(250, 250, 250, 0.00)) 0%, var(--wp--preset--color--secondary-main, #FAFAFA) 79.5%);"
         }
       ]
     },
-    "custom": {
-      "cssVariables": true
+    "styles": {
+      "color": {
+        "background": "var(--wp--preset--color--background-default)"
+      }
     }
   }
 }
