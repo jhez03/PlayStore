@@ -128,7 +128,6 @@ a {
 body {
   font-family: Urbanist;
   font-style: normal;
-  background: var(--wp--preset--gradient--section-mask);
 }
 .main-gradient {
   background: var(--wp--preset--gradient--main-gradient);
@@ -144,4 +143,21 @@ body {
 }
 .shadow-button {
   box-shadow: 0px 16px 24px 0px var(--wp--preset--color--blue-48);
+}
+.accent-gradient {
+  background: var(
+    --wp--preset--gradient--main-gradient,
+    linear-gradient(
+      90deg,
+      var(--wp--preset--color--blue-main, #3dafe2) 0%,
+      var(--wp--preset--color--purple-main, #6f76c0) 100%
+    )
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.playstore-section {
+  padding-top: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5rem);
+  padding-bottom: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5rem);
 }
