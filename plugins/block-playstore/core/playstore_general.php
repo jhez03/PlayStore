@@ -25,7 +25,7 @@ if ( ! class_exists( 'Playstore_General' )) {
 					'thumbnail'   => get_the_post_thumbnail_url( get_the_ID(), 'medium' ),
 					'date'        => get_the_date(),
 					'excerpt'     => get_the_excerpt(),
-					'short_title' => wp_trim_words( get_the_title(), 10, '...' ),
+					'short_title' => wp_trim_words( get_the_title(), 6, '...' ),
 				);
 			}
 			wp_reset_postdata();
