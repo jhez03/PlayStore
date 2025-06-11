@@ -15,6 +15,12 @@
 	gap: 24px;
 	font-size: 14px;
 	font-style: normal;
+	margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+	.subscribe-form {
+		flex-direction: column;
+	}
 }
 .subscribe-form label {
 	padding: 16px 24px;
@@ -37,7 +43,7 @@
 	line-height: 20px;
 	text-transform: uppercase;
 
-	/* shadow/button */
-	box-shadow: 0px 16px 24px 0px var(--blue-48, rgba(61, 175, 226, 0.48));
+	box-shadow: 0px 16px 24px 0px
+		var(--wp--preset--color--blue-48, rgba(61, 175, 226, 0.48));
 }
 

@@ -159,5 +159,4 @@ body {
 }
 .playstore-section {
   padding-top: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5rem);
-  padding-bottom: clamp(3.75rem, calc(2.77rem + 4.92vw), 7.5rem);
 }
