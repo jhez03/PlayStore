@@ -20,8 +20,7 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	const blockProps = useBlockProps({
-		className:
-			"playstore-section relative h-[400px] sm:h-[500px] lg:h-[600px] xl:my-[120px]",
+		className: "playstore-section",
 	});
 
 	return (
@@ -37,20 +36,22 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<section {...blockProps}>
-				<div className="playstore-subscribe min-h-screen w-full ">
-					{backgroundUrl ? (
-						<img
-							src={backgroundUrl}
-							alt={__("Background Image", "block-playstore")}
-							className="w-full"
-						/>
-					) : (
-						<div className="playstore-subscribe-placeholder">
-							<p>{__("Select a background image", "block-playstore")}</p>
-						</div>
-					)}
-					<div className="subscribe-mask absolute inset-0" />
-					<div className="absolute inset-0 2xl:px-[190px] 2xl:py-[120px]">
+				<div className="relative w-full h-full pt-10 px-5 lg:px-[190px]">
+					<div className="absolute inset-0">
+						{backgroundUrl ? (
+							<img
+								src={backgroundUrl}
+								alt={__("Background Image", "block-playstore")}
+								className="w-full h-full object-cover object-center"
+							/>
+						) : (
+							<div className="playstore-subscribe-placeholder">
+								<p>{__("Select a background image", "block-playstore")}</p>
+							</div>
+						)}
+					</div>
+					<div className="background-mask absolute inset-0" />
+					<div className="relative inset-0 z-2">
 						<MediaUploadCheck>
 							<MediaUpload
 								onSelect={onSelectImage}
@@ -69,12 +70,12 @@ export default function Edit({ attributes, setAttributes }) {
 								)}
 							/>
 						</MediaUploadCheck>
-						<div className="subscribe-header w-full grid grid-cols-2">
+						<div className="subscribe-header w-full grid grid-cols-1 xl:grid-cols-2">
 							<div>
 								<RichText
 									tagName="h1"
 									value={title}
-									className="text-6xl font-bold text-[var(--wp--preset--color--primary)] mb-[16px]"
+									className="text-3xl md:text-6xl font-bold text-[var(--wp--preset--color--primary)] mb-[16px]"
 									onChange={(value) => setAttributes({ title: value })}
 									allowedFormats={[
 										"core/bold",
