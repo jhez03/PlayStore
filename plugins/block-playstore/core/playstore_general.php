@@ -1,7 +1,11 @@
 <?php
 if ( ! class_exists( 'Playstore_General' )) {
 	class Playstore_General {
-		public static function get_news( $args = array() ) {
+		/**
+		* @return array<int,array<string,mixed>>
+		* @param mixed $args
+		*/
+		public static function get_news( $args = array() ): array {
 			$default_args = array(
 				'post_type'      => 'news',
 				'posts_per_page' => 3,
