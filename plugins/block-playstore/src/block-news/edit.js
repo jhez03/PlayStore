@@ -19,7 +19,7 @@ export default function Edit({ attributes, setAttributes }) {
 	};
 
 	const blockProps = useBlockProps({
-		className: "playstore-section relative h-[400px] sm:h-[500px] lg:h-[600px]",
+		className: "playstore-section",
 	});
 	//fetch using getEntityRecords
 	// const newsPosts = useSelect(
@@ -49,7 +49,6 @@ export default function Edit({ attributes, setAttributes }) {
 	if (loading) {
 		return <p>{__("Loading news posts...", "block-playstore")}</p>;
 	}
-	console.log("News Posts:", newsPosts);
 
 	return (
 		<>
@@ -65,18 +64,24 @@ export default function Edit({ attributes, setAttributes }) {
 				</PanelBody>
 			</InspectorControls>
 			<section {...blockProps}>
-				<div className="playstore-news overflow-hidden">
-					{/* BG image */}
-					{backgroundUrl ? (
-						<img src={backgroundUrl} alt="News Background" className="w-full" />
-					) : (
-						<div>
-							<span>{__("No image selected", "block-playstore")}</span>
-						</div>
-					)}
-					<div className="section-mask absolute inset-0" />
+				<div className="relative">
+					<div className="absolute inset-0 z-0">
+						{/* BG image */}
+						{backgroundUrl ? (
+							<img
+								src={backgroundUrl}
+								alt="News Background"
+								className="w-full h-full object-cover"
+							/>
+						) : (
+							<div>
+								<span>{__("No image selected", "block-playstore")}</span>
+							</div>
+						)}
+					</div>
+					<div className="background-mask absolute inset-0" />
 
-					<div className="absolute inset-0 flex flex-col item-center gap-[48px]  xl:py-[120px]">
+					<div className="playstore-news-wrapper relative flex flex-col item-center gap-[48px] px-5 xl:px-20 ">
 						<MediaUploadCheck>
 							<MediaUpload
 								onSelect={onSelectImage}
@@ -98,34 +103,34 @@ export default function Edit({ attributes, setAttributes }) {
 						<div className="news-header text-center w-full">
 							<RichText
 								tagName="h2"
-								className="playstore-main-gradient"
+								className="accent-gradient text-[54px] font-bold leading-[75.6px] whitespace-nowrap"
 								value={header}
 								onChange={(value) => setAttributes({ header: value })}
 								placeholder={__("News Section Title…", "block-playstore")}
 							/>
 							<RichText
 								tagName="p"
-								className="text-xl text-[var(--text-secondary)] font-normal leading-[32px] mt-[24px]"
+								className="text-xl text-[var(--wp--preset--color--text-secondary)] font-normal leading-[32px] mt-[24px]"
 								value={description}
 								onChange={(value) => setAttributes({ description: value })}
 								placeholder={__("Section description…", "block-playstore")}
 							/>
 						</div>
-						<div className="flex max-lg:flex-col gap-[48px] z-15 justify-center">
+						<div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:gap-[48px] gap-5 mx-auto text-center">
 							{newsPosts?.map((news) => (
 								<div
 									key={news.id}
-									className="bg-[var(--wp--preset--color--background-default)] rounded-lg overflow-hidden shadow-lg w-[481px] text-center"
+									className="bg-[var(--wp--preset--color--background-default)]  rounded-lg overflow-hidden shadow-lg"
 								>
 									<div className="h-2 main-gradient"></div>
-									<div className="px-[48px] py-[46px] pb-[24px] ">
-										<h2 className="text-2xl font-bold mb-4 text-[#3498db]">
+									<div className="px-5 py-6 xl:px-[48px] xl:pt-[46px] xl:pb-[24px]">
+										<h2 className="text-xl sm:text-2xl md:text-3xl font-bold  accent-gradient ">
 											{news.short_title || news.title?.rendered}
 										</h2>
 									</div>
 									<div>
 										<img
-											className="w-[481px] "
+											className="w-full"
 											src={
 												news.thumbnail ||
 												news._embedded?.["wp:featuredmedia"]?.[0]?.source_url
@@ -133,7 +138,7 @@ export default function Edit({ attributes, setAttributes }) {
 											alt={news.title?.rendered || "News Thumbnail"}
 										/>
 									</div>
-									<p className="text-[var(--text-secondary)] px-[48px] py-[24px] text-[20px] font-[400] ">
+									<p className="text-[var(--wp--preset--color--text-secondary)] px-5 py-5 xl:px-[48px] xl:py-[24px] text-[20px] font-[400] ">
 										{news.excerpt ||
 											__("No excerpt available", "block-playstore")}
 									</p>
@@ -143,7 +148,7 @@ export default function Edit({ attributes, setAttributes }) {
 											target="_blank"
 											rel="noopener noreferrer"
 										>
-											<button className="bg-gradient-to-r from-[var(--wp--preset--color--blue-main)] to-[var(--wp--preset--color--purple-main)] shadow-[0px_16px_24px_0px_rgba(61,175,226,0.48)] rounded-[5px] flex items-center gap-[10px] px-[32px] py-[20px]  text-[14px] text-[#FAFAFA]">
+											<button className="main-gradient shadow-[0px_16px_24px_0px_rgba(61,175,226,0.48)] rounded-[5px] flex items-center gap-[10px] px-[32px] py-[20px] text-[14px] text-[#FAFAFA]">
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
 													width="24"

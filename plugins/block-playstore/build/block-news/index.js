@@ -58,7 +58,7 @@ function Edit({
     });
   };
   const blockProps = (0,_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.useBlockProps)({
-    className: "playstore-section relative h-[400px] sm:h-[500px] lg:h-[600px]"
+    className: "playstore-section"
   });
   //fetch using getEntityRecords
   // const newsPosts = useSelect(
@@ -87,7 +87,6 @@ function Edit({
       children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Loading news posts...", "block-playstore")
     });
   }
-  console.log("News Posts:", newsPosts);
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.InspectorControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_2__.PanelBody, {
@@ -105,19 +104,22 @@ function Edit({
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("section", {
       ...blockProps,
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-        className: "playstore-news overflow-hidden",
-        children: [backgroundUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-          src: backgroundUrl,
-          alt: "News Background",
-          className: "w-full"
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
-            children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("No image selected", "block-playstore")
+        className: "relative",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+          className: "absolute inset-0 z-0",
+          children: backgroundUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
+            src: backgroundUrl,
+            alt: "News Background",
+            className: "w-full h-full object-cover"
+          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("span", {
+              children: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("No image selected", "block-playstore")
+            })
           })
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-          className: "section-mask absolute inset-0"
+          className: "background-mask absolute inset-0"
         }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-          className: "absolute inset-0 flex flex-col item-center gap-[48px]  xl:py-[120px]",
+          className: "playstore-news-wrapper relative flex flex-col item-center gap-[48px] px-5 xl:px-20 ",
           children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUploadCheck, {
             children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.MediaUpload, {
               onSelect: onSelectImage,
@@ -138,7 +140,7 @@ function Edit({
             className: "news-header text-center w-full",
             children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
               tagName: "h2",
-              className: "playstore-main-gradient",
+              className: "accent-gradient text-[54px] font-bold leading-[75.6px] whitespace-nowrap",
               value: header,
               onChange: value => setAttributes({
                 header: value
@@ -146,7 +148,7 @@ function Edit({
               placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("News Section Title…", "block-playstore")
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_1__.RichText, {
               tagName: "p",
-              className: "text-xl text-[var(--text-secondary)] font-normal leading-[32px] mt-[24px]",
+              className: "text-xl text-[var(--wp--preset--color--text-secondary)] font-normal leading-[32px] mt-[24px]",
               value: description,
               onChange: value => setAttributes({
                 description: value
@@ -154,25 +156,25 @@ function Edit({
               placeholder: (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("Section description…", "block-playstore")
             })]
           }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-            className: "flex max-lg:flex-col gap-[48px] z-15 justify-center",
+            className: "grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 xl:gap-[48px] gap-5 mx-auto text-center",
             children: newsPosts?.map(news => /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
-              className: "bg-[var(--wp--preset--color--background-default)] rounded-lg overflow-hidden shadow-lg w-[481px] text-center",
+              className: "bg-[var(--wp--preset--color--background-default)]  rounded-lg overflow-hidden shadow-lg",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                 className: "h-2 main-gradient"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
-                className: "px-[48px] py-[46px] pb-[24px] ",
+                className: "px-5 py-6 xl:px-[48px] xl:pt-[46px] xl:pb-[24px]",
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
-                  className: "text-2xl font-bold mb-4 text-[#3498db]",
+                  className: "text-xl sm:text-2xl md:text-3xl font-bold  accent-gradient ",
                   children: news.short_title || news.title?.rendered
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                 children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
-                  className: "w-[481px] ",
+                  className: "w-full",
                   src: news.thumbnail || news._embedded?.["wp:featuredmedia"]?.[0]?.source_url,
                   alt: news.title?.rendered || "News Thumbnail"
                 })
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("p", {
-                className: "text-[var(--text-secondary)] px-[48px] py-[24px] text-[20px] font-[400] ",
+                className: "text-[var(--wp--preset--color--text-secondary)] px-5 py-5 xl:px-[48px] xl:py-[24px] text-[20px] font-[400] ",
                 children: news.excerpt || (0,_wordpress_i18n__WEBPACK_IMPORTED_MODULE_0__.__)("No excerpt available", "block-playstore")
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                 className: "pb-[48px] flex justify-center",
@@ -181,7 +183,7 @@ function Edit({
                   target: "_blank",
                   rel: "noopener noreferrer",
                   children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("button", {
-                    className: "bg-gradient-to-r from-[var(--wp--preset--color--blue-main)] to-[var(--wp--preset--color--purple-main)] shadow-[0px_16px_24px_0px_rgba(61,175,226,0.48)] rounded-[5px] flex items-center gap-[10px] px-[32px] py-[20px]  text-[14px] text-[#FAFAFA]",
+                    className: "main-gradient shadow-[0px_16px_24px_0px_rgba(61,175,226,0.48)] rounded-[5px] flex items-center gap-[10px] px-[32px] py-[20px] text-[14px] text-[#FAFAFA]",
                     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("svg", {
                       xmlns: "http://www.w3.org/2000/svg",
                       width: "24",
