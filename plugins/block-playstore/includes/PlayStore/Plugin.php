@@ -6,6 +6,11 @@
  */
 
 namespace PlayStore;
+use Playstore\General;
+use Playstore\CustomTypes;
+
+use Playstore\Navigation;
+use Playstore\WooCommerce;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -56,10 +61,9 @@ final class Plugin {
 		$services = array(
 			BlockRegistrar::class,
 			Navigation::class,
-			Woocommerce::class,
+			WooCommerce::class,
 			General::class,
 			CustomTypes::class,
-			RestApi::class,
 
 		);
 
@@ -80,12 +84,12 @@ final class Plugin {
 	/**
 	 * Disable clone.
 	 */
-	private function __clone() {}
+	private function __clone(): void {}
 
 	/**
 	 * Disable unserialize.
 	 */
-	public function __wakeup() {
+	public function __wakeup(): void {
 		do_action( 'playstore_plugin_wakeup_violation' );
 	}
 }

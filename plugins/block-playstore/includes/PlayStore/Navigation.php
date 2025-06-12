@@ -5,7 +5,7 @@
  * @package PlayStore\Navigation
  */
 
-namespace PlayStore\Navigation;
+namespace PlayStore;
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' )) {
 	exit;
@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' )) {
 
 use Walker_Nav_Menu;
 
-class Walker extends Walker_Nav_Menu {
+class Navigation extends Walker_Nav_Menu {
 	protected int $dropdown_count = 0;
 
 	public function start_lvl( &$output, $depth = 0, $args = null ) {

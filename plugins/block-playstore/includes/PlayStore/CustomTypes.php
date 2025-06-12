@@ -10,6 +10,7 @@ class CustomTypes {
 	public static function init() {
 		add_action( 'init', array( self::class, 'register_news_post_type' ) );
 		add_action( 'init', array( self::class, 'register_news_category_taxonomy' ) );
+		add_action( 'init', array( self::class, 'register_platforms_taxonomy' ) );
 	}
 
 	public static function register_news_post_type() {
@@ -70,4 +71,30 @@ class CustomTypes {
 
 		register_taxonomy( 'news_category', array( 'news' ), $args );
 	}
+	public static function register_platforms_taxonomy() {
+		$labels = array(
+			'name'          => _x( 'Platforms', 'taxonomy general name', 'textdomain' ),
+			'singular_name' => _x( 'Platform', 'taxonomy singular name', 'textdomain' ),
+			'search_items'  => __( 'Search Platforms', 'textdomain' ),
+			'all_items'     => __( 'All Platforms', 'textdomain' ),
+			'edit_item'     => __( 'Edit Platform', 'textdomain' ),
+			'update_item'   => __( 'Update Platform', 'textdomain' ),
+			'add_new_item'  => __( 'Add New Platform', 'textdomain' ),
+			'new_item_name' => __( 'New Platform Name', 'textdomain' ),
+			'menu_name'     => __( 'Platforms', 'textdomain' ),
+		);
+
+		$args = array(
+			'hierarchical'      => true,
+			'labels'            => $labels,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'query_var'         => true,
+			'rewrite'           => array( 'slug' => 'platform' ),
+			'show_in_rest'      => true,
+		);
+
+		register_taxonomy( 'platform', array( 'product' ), $args );
+	}
+	// I need to register a custom taxonomy for genres
 }

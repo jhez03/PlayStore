@@ -176,5 +176,3 @@ class WooCommerce {
 		}
 	}
 }
-	// Initialize the class
-	add_action( 'init', array( 'Playstore_WooCommerce', 'init' ) );
