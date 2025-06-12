@@ -1,6 +1,7 @@
 <?php
+use PlayStore\WooCommerce;
 
-$products    = Playstore_WooCommerce::get_products(
+$products    = PlayStore\WooCommerce::get_products(
 	array(
 		'posts_per_page' => 12,
 	)

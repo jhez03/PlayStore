@@ -8,7 +8,6 @@
  * - newsCount (optional)
  * @var array $attributes
  */
-require_once plugin_dir_path( __DIR__ ) . '../core/playstore_general.php';
 $blockProps = get_block_wrapper_attributes(
 	array(
 		'class' => 'playstore-section',
@@ -20,7 +19,7 @@ $header         = isset( $attributes['header'] ) ? $attributes['header'] : '';
 $description    = isset( $attributes['description'] ) ? $attributes['description'] : '';
 $news_count     = isset( $attributes['newsCount'] ) ? (int) $attributes['newsCount'] : 3;
 
-$news_query = Playstore_General::get_news(
+$news_query = Playstore\General::get_news(
 	array(
 		'posts_per_page' => $news_count,
 		'post_status'    => 'publish',

@@ -23,7 +23,7 @@ $menu          = wp_get_nav_menu_object( $attributes['selectedMenu'] ) ?? null;
 							'menu'       => $menu,
 							'container'  => true,
 							'menu_class' => 'playstore-nav-links hidden lg:flex lg:gap-[32px] gap-[10px]',
-							'walker'     => new Playstore_Nav_Walker(),
+							'walker'     => new \Playstore\Navigation\Walker(),
 						)
 					);
 					?>
@@ -160,7 +160,7 @@ $menu          = wp_get_nav_menu_object( $attributes['selectedMenu'] ) ?? null;
 				'theme_location' => 'playstore-header-menu',
 				'container'      => false,
 				'menu_class'     => 'hamburger-nav-links',
-				'walker'         => new Playstore_Nav_Walker(),
+				'walker'         => new Playstore\Navigation\Walker(),
 
 			)
 		);

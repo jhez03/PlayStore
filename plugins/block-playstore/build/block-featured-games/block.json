@@ -1,0 +1,32 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/block-featured-games",
+  "version": "0.1.1",
+  "title": "Playstore Featuer Games",
+  "category": "gamestore",
+  "icon": "layout",
+  "description": "A block to display featured games from the Playstore.",
+  "example": {},
+  "supports": {
+    "html": false,
+    "innerBlocks": true
+  },
+  "attributes": {
+    "header": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "count": {
+      "type": "number",
+      "default": 6
+    }
+  },
+  "textdomain": "block-playstore",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "render": "file:./render.php",
+  "style": "file:./style-index.css"
+}

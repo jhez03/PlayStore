@@ -1,6 +1,40 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
+	'block-featured-games' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'create-block/block-featured-games',
+		'version' => '0.1.1',
+		'title' => 'Playstore Featuer Games',
+		'category' => 'gamestore',
+		'icon' => 'layout',
+		'description' => 'A block to display featured games from the Playstore.',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false,
+			'innerBlocks' => true
+		),
+		'attributes' => array(
+			'header' => array(
+				'type' => 'string'
+			),
+			'description' => array(
+				'type' => 'string'
+			),
+			'count' => array(
+				'type' => 'number',
+				'default' => 6
+			)
+		),
+		'textdomain' => 'block-playstore',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'render' => 'file:./render.php',
+		'style' => 'file:./style-index.css'
+	),
 	'block-games-line' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,

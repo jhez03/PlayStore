@@ -9,51 +9,17 @@
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       block-playstore
- *
- * @package CreateBlock
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
-	exit; // Exit if accessed directly.
+	exit;
 }
-foreach (glob( plugin_dir_path( __FILE__ ) . 'core/*.php' ) as $file) {
-	require_once $file;
+if ( ! defined( 'PLAYSTORE_PLUGIN_FILE' ) ) {
+	define( 'PLAYSTORE_PLUGIN_FILE', __FILE__ );
 }
-add_filter(
-	'block_categories_all',
-	function ( $categories ) {
-		return array_merge(
-			$categories,
-			array(
-				array(
-					'slug'  => 'playstore',
-					'title' => 'PlayStore',
-				),
-			)
-		);
-	}
-);
+
+// Autoload
+require_once __DIR__ . '/vendor/autoload.php';
 
 
-function create_block_block_playstore_block_init() {
-	if ( function_exists( 'wp_register_block_types_from_metadata_collection' ) ) {
-		wp_register_block_types_from_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
-		return;
-	}
-
-	if ( function_exists( 'wp_register_block_metadata_collection' ) ) {
-		wp_register_block_metadata_collection( __DIR__ . '/build', __DIR__ . '/build/blocks-manifest.php' );
-	}
-	/**
-	 * Registers the block type(s) in the `blocks-manifest.php` file.
-	 *
-	 * @see https://developer.wordpress.org/reference/functions/register_block_type/
-	 */
-	$manifest_data = require __DIR__ . '/build/blocks-manifest.php';
-	foreach ( array_keys( $manifest_data ) as $block_type ) {
-		register_block_type( __DIR__ . "/build/{$block_type}" );
-	}
-}
-add_action( 'init', 'create_block_block_playstore_block_init' );
-
-// custom nav walker for playstore navigation.
+PlayStore\Plugin::init();
