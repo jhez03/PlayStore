@@ -186,7 +186,7 @@ class Decoder
 
     private function decodeDouble(string $bytes): float
     {
-        // This assumes IEEE 754 doubles, but most (all?) modern platforms
+        // This assumes IEEE 754 doubles, but most (all?) modern platform
         // use them.
         $rc = unpack('E', $bytes);
         if ($rc === false) {
@@ -201,7 +201,7 @@ class Decoder
 
     private function decodeFloat(string $bytes): float
     {
-        // This assumes IEEE 754 floats, but most (all?) modern platforms
+        // This assumes IEEE 754 floats, but most (all?) modern platform
         // use them.
         $rc = unpack('G', $bytes);
         if ($rc === false) {

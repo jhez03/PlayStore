@@ -11,8 +11,6 @@
   <file>./</file>
 
   <!-- Exclude folders like vendor or node_modules -->
-  <exclude-pattern>*/vendor/*</exclude-pattern>
-  <exclude-pattern>*/node_modules/*</exclude-pattern>
 
   <!-- PHPCompatibility settings -->
   <config name="testVersion" value="8.0-8.4" /> <!-- Change to match your minimum supported PHP version -->

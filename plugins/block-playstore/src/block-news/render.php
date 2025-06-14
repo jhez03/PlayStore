@@ -19,7 +19,7 @@ $header         = isset( $attributes['header'] ) ? $attributes['header'] : '';
 $description    = isset( $attributes['description'] ) ? $attributes['description'] : '';
 $news_count     = isset( $attributes['newsCount'] ) ? (int) $attributes['newsCount'] : 3;
 
-$news_query = Playstore\General::get_news(
+$news_query = \Playstore\General::get_news(
 	array(
 		'posts_per_page' => $news_count,
 		'post_status'    => 'publish',

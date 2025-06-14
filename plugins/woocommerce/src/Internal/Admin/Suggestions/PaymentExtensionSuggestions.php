@@ -2638,7 +2638,7 @@ class PaymentExtensionSuggestions {
 			self::PAYONEER          => array(
 				'_type'       => self::TYPE_PSP,
 				'title'       => esc_html__( 'Payoneer Checkout', 'woocommerce' ),
-				'description' => esc_html__( 'Payoneer Checkout is the next generation of payment processing platforms, giving merchants around the world the solutions and direction they need to succeed in today\'s hyper-competitive global market.', 'woocommerce' ),
+				'description' => esc_html__( 'Payoneer Checkout is the next generation of payment processing platform, giving merchants around the world the solutions and direction they need to succeed in today\'s hyper-competitive global market.', 'woocommerce' ),
 				'image'       => plugins_url( 'assets/images/onboarding/payoneer.png', WC_PLUGIN_FILE ),
 				'icon'        => plugins_url( 'assets/images/onboarding/icons/payoneer.svg', WC_PLUGIN_FILE ),
 				'plugin'      => array(

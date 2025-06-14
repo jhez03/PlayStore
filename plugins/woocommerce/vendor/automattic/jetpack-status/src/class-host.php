@@ -70,7 +70,7 @@ class Host {
 	/**
 	 * Determine if this is a WordPress.com site.
 	 *
-	 * Includes both Simple and WoA platforms.
+	 * Includes both Simple and WoA platform.
 	 *
 	 * @return bool
 	 */

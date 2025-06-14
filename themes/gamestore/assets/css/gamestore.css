@@ -124,7 +124,9 @@ a {
   --wp--preset--color--contrast: #ffffff;
   --shadow-24: rgba(0, 0, 0, 0.64);
 }
-
+html {
+  background: var(--wp--preset--color--background-default);
+}
 body {
   font-family: Urbanist;
   font-style: normal;

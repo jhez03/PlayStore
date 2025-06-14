@@ -1,6 +1,5 @@
 <?php
 namespace Playstore;
-// Exit if accessed directly
 if ( ! defined( 'ABSPATH' )) {
 	exit;
 }
@@ -28,27 +27,65 @@ class WooCommerce {
 	public static function get_products( $args = array() ): array {
 		$default_args = array(
 			'post_type'      => 'product',
-			'posts_per_page' => 12,
 			'post_status'    => 'publish',
+			'posts_per_page' => 6,
 		);
 
-		$query    = new WP_Query( array_merge( $default_args, $args ) );
+		// $test = array_merge( $default_args, $args );
+		//
+		// echo '<pre>';
+		// print_r( $test );
+		// exit;
+
+		$query       = new WP_Query( array_merge( $default_args, $args ) );
+		$product_ids = wp_list_pluck( $query->posts, 'ID' );
+
+		// Preload all taxonomy terms for products
+		$terms_by_product = array();
+		$term_meta_cache  = array();
+
+		if ( ! empty( $product_ids )) {
+			$terms = wp_get_object_terms( $product_ids, 'platform', array( 'fields' => 'all_with_object_id' ) );
+
+			foreach ($terms as $term) {
+				$terms_by_product[ $term->object_id ][] = $term;
+
+				$term_meta_cache[ $term->term_id ] = wp_get_attachment_image_url(
+					get_term_meta( $term->term_id, 'platform_thumbnail_id', true ),
+					'full'
+				);
+			}
+		}
+
 		$products = array();
 
-		while ( $query->have_posts() ) {
-			$query->the_post();
-			global $product;
+		foreach ($query->posts as $post) {
+			$product = wc_get_product( $post );
+			if ( ! $product) {
+				continue;
+			}
 
-			if ( ! $product ) {
-				$product = wc_get_product( get_the_ID() );
+			$platforms = array();
+			$terms     = $terms_by_product[ $product->get_id() ] ?? array();
+
+			foreach ($terms as $term) {
+				$platforms[] = array(
+					'name'  => $term->name,
+					'slug'  => $term->slug,
+					'image' => $term_meta_cache[ $term->term_id ] ?? null,
+				);
 			}
 
 			$products[] = array(
-				'id'    => get_the_ID(),
-				'title' => get_the_title(),
-				'price' => $product->get_price_html(),
-				'url'   => get_permalink(),
-				'image' => wp_get_attachment_image_url( $product->get_image_id(), 'full' ),
+				'id'            => $product->get_id(),
+				'title'         => $product->get_name(),
+				'price_html'    => $product->get_price_html(),
+				'price'         => $product->get_price(),
+				'regular_price' => wc_price( $product->get_regular_price() ),
+				'sale_price'    => wc_price( $product->get_sale_price() ),
+				'url'           => get_permalink( $product->get_id() ),
+				'image'         => wp_get_attachment_image_url( $product->get_image_id(), 'full' ),
+				'platforms'     => $platforms,
 			);
 		}
 
@@ -76,11 +113,11 @@ class WooCommerce {
 	public static function render_playstore_tab_content(): void {
 		global $post;
 
-		// get saved platforms
-		$saved_platforms = (array) get_post_meta( $post->ID, '_playstore_platforms', true );
+		// get saved platform
+		$saved_platform = (array) get_post_meta( $post->ID, '_playstore_platform', true );
 		// can be filtered for dynamic extension
-		$platforms = apply_filters(
-			'playstore_woocommerce_platforms',
+		$platform = apply_filters(
+			'playstore_woocommerce_platform',
 			array(
 				'pc'          => __( 'PC', 'playstore-woocommerce' ),
 				'xbox'        => __( 'Xbox', 'playstore-woocommerce' ),
@@ -104,10 +141,10 @@ class WooCommerce {
 					<p class="form-field">
 						<label>Available Platforms</label>
 					</p>
-					<?php foreach ( $platforms as $key => $label ) : ?>
+					<?php foreach ( $platform as $key => $label ) : ?>
 						<p class="form-field">
 							<label><?php echo esc_html( $label ); ?></label>
-							<input type="checkbox" name="_playstore_platforms[]" value="<?php echo esc_attr( $key ); ?> " <?php checked( in_array( $key, $saved_platforms ) ); ?> />
+							<input type="checkbox" name="_playstore_platform[]" value="<?php echo esc_attr( $key ); ?> " <?php checked( in_array( $key, $saved_platform ) ); ?> />
 						</p>
 
 						<?php endforeach; ?>
@@ -160,7 +197,7 @@ class WooCommerce {
 		} else {
 			delete_post_meta( $post_id, '_release_date' );
 		}
-		//save publisher and platforms
+		//save publisher and platform
 
 		if ( isset( $_POST['_playstore_publisher'] ) ) {
 			$publisher = sanitize_text_field( $_POST['_playstore_publisher'] );
@@ -168,11 +205,11 @@ class WooCommerce {
 		} else {
 			delete_post_meta( $post_id, '_playstore_publisher' );
 		}
-		if ( isset( $_POST['_playstore_platforms'] ) && is_array( $_POST['_playstore_platforms'] ) ) {
-			$platforms = array_map( 'sanitize_text_field', $_POST['_playstore_platforms'] );
-			update_post_meta( $post_id, '_playstore_platforms', $platforms );
+		if ( isset( $_POST['_playstore_platform'] ) && is_array( $_POST['_playstore_platform'] ) ) {
+			$platform = array_map( 'sanitize_text_field', $_POST['_playstore_platform'] );
+			update_post_meta( $post_id, '_playstore_platform', $platform );
 		} else {
-			delete_post_meta( $post_id, '_playstore_platforms' );
+			delete_post_meta( $post_id, '_playstore_platform' );
 		}
 	}
 }

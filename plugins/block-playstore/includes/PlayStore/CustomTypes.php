@@ -9,8 +9,6 @@ if ( ! defined( 'ABSPATH' )) {
 class CustomTypes {
 	public static function init() {
 		add_action( 'init', array( self::class, 'register_news_post_type' ) );
-		add_action( 'init', array( self::class, 'register_news_category_taxonomy' ) );
-		add_action( 'init', array( self::class, 'register_platforms_taxonomy' ) );
 	}
 
 	public static function register_news_post_type() {
@@ -44,57 +42,4 @@ class CustomTypes {
 
 		register_post_type( 'news', $args );
 	}
-	public static function register_news_category_taxonomy() {
-		$labels = array(
-			'name'              => _x( 'News Categories', 'taxonomy general name', 'textdomain' ),
-			'singular_name'     => _x( 'News Category', 'taxonomy singular name', 'textdomain' ),
-			'search_items'      => __( 'Search News Categories', 'textdomain' ),
-			'all_items'         => __( 'All News Categories', 'textdomain' ),
-			'parent_item'       => __( 'Parent News Category', 'textdomain' ),
-			'parent_item_colon' => __( 'Parent News Category:', 'textdomain' ),
-			'edit_item'         => __( 'Edit News Category', 'textdomain' ),
-			'update_item'       => __( 'Update News Category', 'textdomain' ),
-			'add_new_item'      => __( 'Add New News Category', 'textdomain' ),
-			'new_item_name'     => __( 'New News Category Name', 'textdomain' ),
-			'menu_name'         => __( 'News Categories', 'textdomain' ),
-		);
-
-		$args = array(
-			'hierarchical'      => true,
-			'labels'            => $labels,
-			'show_ui'           => true,
-			'show_admin_column' => true,
-			'show_in_rest'      => true, // Enable Gutenberg
-			'query_var'         => true,
-			'rewrite'           => array( 'slug' => 'news-category' ),
-		);
-
-		register_taxonomy( 'news_category', array( 'news' ), $args );
-	}
-	public static function register_platforms_taxonomy() {
-		$labels = array(
-			'name'          => _x( 'Platforms', 'taxonomy general name', 'textdomain' ),
-			'singular_name' => _x( 'Platform', 'taxonomy singular name', 'textdomain' ),
-			'search_items'  => __( 'Search Platforms', 'textdomain' ),
-			'all_items'     => __( 'All Platforms', 'textdomain' ),
-			'edit_item'     => __( 'Edit Platform', 'textdomain' ),
-			'update_item'   => __( 'Update Platform', 'textdomain' ),
-			'add_new_item'  => __( 'Add New Platform', 'textdomain' ),
-			'new_item_name' => __( 'New Platform Name', 'textdomain' ),
-			'menu_name'     => __( 'Platforms', 'textdomain' ),
-		);
-
-		$args = array(
-			'hierarchical'      => true,
-			'labels'            => $labels,
-			'show_ui'           => true,
-			'show_admin_column' => true,
-			'query_var'         => true,
-			'rewrite'           => array( 'slug' => 'platform' ),
-			'show_in_rest'      => true,
-		);
-
-		register_taxonomy( 'platform', array( 'product' ), $args );
-	}
-	// I need to register a custom taxonomy for genres
 }
