@@ -37,10 +37,6 @@ export default function Edit({ attributes, setAttributes }) {
 		return <p>{__("Loading featured games...", "playstore-woocommerce")}</p>;
 	}
 
-	const test = featuredGames?.map((game) => {
-		console.log(game);
-	});
-
 	return (
 		<>
 			<InspectorControls>
@@ -74,8 +70,8 @@ export default function Edit({ attributes, setAttributes }) {
 							/>
 						</div>
 						<div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 xl:gap-[48px] gap-5 mx-auto ">
-							{featuredGames?.map((game) => (
-								<div key={game.id} className="rounded-[8px] overflow-hidden">
+							{featuredGames?.map((game, idx) => (
+								<div key={idx} className="rounded-[8px] overflow-hidden">
 									<div>
 										<img className="w-full" src={game.image || ""} />
 									</div>
@@ -98,8 +94,8 @@ export default function Edit({ attributes, setAttributes }) {
 									</h2>
 									{game.platforms && game.platforms.length > 0 && (
 										<div className="flex gap-[12px]">
-											{game.platforms?.map((platform) => (
-												<div key={game.id}>
+											{game.platforms?.map((platform, idx) => (
+												<div key={idx}>
 													{platform.image && (
 														<img src={platform.image} alt={game.title} />
 													)}

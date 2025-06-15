@@ -1,0 +1,53 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "create-block/block-cta",
+  "version": "0.1.0",
+  "title": "Block Playstore Cta",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "A block for cta",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "header": {
+      "type": "string",
+      "default": "Header Title"
+    },
+    "description": {
+      "type": "string",
+      "default": "description"
+    },
+    "backgroundUrl": {
+      "type": "string"
+    },
+    "ctaIcon": {
+      "type": "string"
+    },
+    "ctaImage": {
+      "type": "string"
+    },
+    "ctaButtons": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "properties": {
+          "label": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "textdomain": "block-playstore",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "viewScript": "file:./view.js"
+}

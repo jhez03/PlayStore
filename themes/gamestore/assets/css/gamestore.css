@@ -123,6 +123,7 @@ a {
   --wp--preset--color--base: #0e0d0f;
   --wp--preset--color--contrast: #ffffff;
   --shadow-24: rgba(0, 0, 0, 0.64);
+  --wp--preset--color--divider-main: rgba(255, 255, 255, 0.12);
 }
 html {
   background: var(--wp--preset--color--background-default);
