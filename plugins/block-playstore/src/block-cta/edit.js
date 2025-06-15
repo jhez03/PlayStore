@@ -216,7 +216,7 @@ export default function Edit({ attributes, setAttributes }) {
 											href={btn.url}
 											className="text-[var(--wp--preset--color--text-primary)] px-[10px] py-[5px] md:px-[32px] md:py-[20px] rounded-[5px] border border-solid border-[var(--wp--preset--color--divider-main)]"
 										>
-											{btn.label || __("CTA Button")}
+											{btn.label || __("cta Button")}
 										</a>
 									))}
 								</div>
