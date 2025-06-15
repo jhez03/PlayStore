@@ -4,16 +4,24 @@
 
   <!-- Use the WordPress Core ruleset as a base -->
   <rule ref="WordPress-Core" />
+  <rule ref="PHPCompatibility" />
+
 
   <!-- Include all PHP files -->
   <file>./</file>
 
   <!-- Exclude folders like vendor or node_modules -->
-  <exclude-pattern>*/vendor/*</exclude-pattern>
-  <exclude-pattern>*/node_modules/*</exclude-pattern>
+
+  <!-- PHPCompatibility settings -->
+  <config name="testVersion" value="8.0-8.4" /> <!-- Change to match your minimum supported PHP version -->
+  <config name="ignoreErrorsOnExit" value="true"/>
+  <config name="reportErrorsOnExit" value="true"/>
 
   <!-- Relax overly strict rules -->
   <rule ref="Generic.Commenting.DocComment.Missing">
+    <severity>0</severity>
+  </rule>
+  <rule ref="Squiz.Commenting.InlineComment.InvalidEndChar">
     <severity>0</severity>
   </rule>
 

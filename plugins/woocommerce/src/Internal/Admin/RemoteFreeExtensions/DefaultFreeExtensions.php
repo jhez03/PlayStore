@@ -140,7 +140,7 @@ class DefaultFreeExtensions {
 			),
 			'multichannel-by-cedcommerce'   => array(
 				'name'             => __( 'Multichannel for WooCommerce', 'woocommerce' ),
-				'description'      => __( 'Sync your sales data across platforms and manage everything from a unified dashboard.', 'woocommerce' ),
+				'description'      => __( 'Sync your sales data across platform and manage everything from a unified dashboard.', 'woocommerce' ),
 				'image_url'        => plugins_url( '/assets/images/onboarding/multichannel.webp', WC_PLUGIN_FILE ),
 				'manage_url'       => 'admin.php?page=sales_channel',
 				'is_built_by_wc'   => false,

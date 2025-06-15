@@ -1,0 +1,1 @@
+@layer theme, base, components, utilities;@custom-variant dark (&:where(.dark, .dark-mode-playstore *));.wp-block-create-block-block-cta{@import "tailwindcss/preflight.css" layer(base);@import "tailwindcss/utilities.css" layer(utilities);margin-block-start:0}

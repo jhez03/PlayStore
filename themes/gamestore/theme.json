@@ -5,16 +5,36 @@
       "palette": [
         {
           "slug": "background-default",
-          "color": "#FAFAFA",
+          "color": "rgba(250, 250, 250, 1)",
           "name": "Background Default"
         },
         { "slug": "action-main", "color": "#0e0d0f", "name": "Action Main" },
-        { "slug": "purple-main", "color": "#6f76c0", "name": "Purple Main" },
+        {
+          "slug": "purple-main",
+          "color": "rgba(111, 118, 192, 1)",
+          "name": "Purple Main"
+        },
+        {
+          "slug": "blue-48",
+          "color": "rgba(61, 175, 226, 0.48)",
+          "name": "Blue 48"
+        },
+        {
+          "slug": "background-80",
+          "color": "rgba(250, 250, 250, 0.8)",
+          "name": "Background 80"
+        },
+
         { "slug": "blue-main", "color": "#3dafe2", "name": "Blue Main" },
         {
           "slug": "secondary-0",
-          "color": "rgba(250, 250, 250, 0)",
+          "color": "rgba(14, 13, 15, 0)",
           "name": "Secondary 0"
+        },
+        {
+          "slug": "secondary-mask",
+          "color": "rgba(236, 236, 236, 1)",
+          "name": "Secondary Mask"
         },
         {
           "slug": "secondary-main",
@@ -28,8 +48,13 @@
         },
         {
           "slug": "text-primary",
-          "color": "rgba(14, 13, 15, 0.7)",
+          "color": "rgba(14, 13, 15, 1)",
           "name": "Text Primary"
+        },
+        {
+          "slug": "svg-main",
+          "color": "rgba(14, 13, 15, 0.64)",
+          "name": "Svg Main"
         },
         {
           "slug": "divider-input",
@@ -37,9 +62,19 @@
           "name": "Divider Input"
         },
         {
+          "slug": "divider-main",
+          "color": "rgba(14, 13, 15, 0.08)",
+          "name": "Divider Main"
+        },
+        {
           "slug": "white-main",
           "color": "rgba(255, 255, 255, 1)",
           "name": "White Main"
+        },
+        {
+          "slug": "background-0",
+          "color": "rgba(255, 255, 255, 0)",
+          "name": "Background 0"
         },
         {
           "slug": "text-gradient",
@@ -54,15 +89,31 @@
           "gradient": "linear-gradient(90deg, var(--wp--preset--color--blue-main) 0%, var(--wp--preset--color--purple-main) 100%)"
         },
         {
-          "slug": "subscribe-mask",
-          "name": "Subscribe Mask",
-          "gradient": "linear-gradient(270deg, var(--wp--preset--color--secondary-0, rgba(250, 250, 250, 0.00)) 0%, var(--wp--preset--color--secondary-main, #FAFAFA) 79.5%);"
+          "slug": "section-mask",
+          "name": "Section Mask",
+          "gradient": "linear-gradient(270deg, var(--wp--preset--color--secondary-0, rgba(14, 13, 15, 0.00)) 0%, var(--wp--preset--color--secondary-mask) 79.5%)"
+        },
+        {
+          "slug": "background-mask",
+          "name": "Background Mask",
+          "gradient": "linear-gradient(180deg, var(--wp--preset--color--background-default, #FAFAFA) 0%, var(--wp--preset--color--background-80, rgba(250, 250, 250, 0.80)) 50.06%, var(--wp--preset--color--background-default, #FAFAFA) 100%)"
+        },
+
+        {
+          "slug": "repeater-mask",
+          "name": "Repeater Mask",
+          "gradient": "linear-gradient(270deg, var(--wp--preset--color--background-0, rgba(250, 250, 250, 0.00)) 0%, var(--wp--preset--color--background-default, #FAFAFA) 100%)"
         }
       ]
     },
     "styles": {
       "color": {
         "background": "var(--wp--preset--color--background-default)"
+      },
+      "elements": {
+        "link": {
+          "textDecoration": "none"
+        }
       }
     }
   }

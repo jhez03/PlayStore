@@ -360,7 +360,7 @@ class DefaultPaymentGateways {
 			array(
 				'id'                  => 'payoneer-checkout',
 				'title'               => __( 'Payoneer Checkout', 'woocommerce' ),
-				'content'             => __( 'Payoneer Checkout is the next generation of payment processing platforms, giving merchants around the world the solutions and direction they need to succeed in today’s hyper-competitive global market.', 'woocommerce' ),
+				'content'             => __( 'Payoneer Checkout is the next generation of payment processing platform, giving merchants around the world the solutions and direction they need to succeed in today’s hyper-competitive global market.', 'woocommerce' ),
 				'image'               => WC_ADMIN_IMAGES_FOLDER_URL . '/onboarding/payoneer.png',
 				'image_72x72'         => WC_ADMIN_IMAGES_FOLDER_URL . '/payment_methods/72x72/payoneer.png',
 				'plugins'             => array( 'payoneer-checkout' ),

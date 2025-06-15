@@ -640,9 +640,9 @@ class OnboardingProfile extends \WC_REST_Data_Controller {
 				'readonly'    => true,
 				'nullable'    => true,
 			),
-			'selling_platforms'             => array(
+			'selling_platform'             => array(
 				'type'        => array( 'array', 'null' ),
-				'description' => __( 'Selling platforms.', 'woocommerce' ),
+				'description' => __( 'Selling platform.', 'woocommerce' ),
 				'context'     => array( 'view' ),
 				'readonly'    => true,
 				'nullable'    => true,

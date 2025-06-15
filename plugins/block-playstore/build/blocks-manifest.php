@@ -1,6 +1,97 @@
 <?php
 // This file is generated. Do not modify it manually.
 return array(
+	'block-cta' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'create-block/block-cta',
+		'version' => '0.1.0',
+		'title' => 'Block Playstore Cta',
+		'category' => 'widgets',
+		'icon' => 'smiley',
+		'description' => 'A block for cta',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false
+		),
+		'attributes' => array(
+			'header' => array(
+				'type' => 'string',
+				'default' => 'Header Title'
+			),
+			'description' => array(
+				'type' => 'string',
+				'default' => 'description'
+			),
+			'backgroundUrl' => array(
+				'type' => 'string'
+			),
+			'ctaIcon' => array(
+				'type' => 'string'
+			),
+			'ctaImage' => array(
+				'type' => 'string'
+			),
+			'ctaButtons' => array(
+				'type' => 'array',
+				'default' => array(
+					
+				),
+				'items' => array(
+					'type' => 'object',
+					'properties' => array(
+						'label' => array(
+							'type' => 'string'
+						),
+						'url' => array(
+							'type' => 'string'
+						)
+					)
+				)
+			)
+		),
+		'textdomain' => 'block-playstore',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'style' => 'file:./style-index.css',
+		'viewScript' => 'file:./view.js'
+	),
+	'block-featured-games' => array(
+		'$schema' => 'https://schemas.wp.org/trunk/block.json',
+		'apiVersion' => 3,
+		'name' => 'create-block/block-featured-games',
+		'version' => '0.1.1',
+		'title' => 'Playstore Featuer Games',
+		'category' => 'gamestore',
+		'icon' => 'layout',
+		'description' => 'A block to display featured games from the Playstore.',
+		'example' => array(
+			
+		),
+		'supports' => array(
+			'html' => false,
+			'innerBlocks' => true
+		),
+		'attributes' => array(
+			'header' => array(
+				'type' => 'string'
+			),
+			'description' => array(
+				'type' => 'string'
+			),
+			'count' => array(
+				'type' => 'number',
+				'default' => 6
+			)
+		),
+		'textdomain' => 'block-playstore',
+		'editorScript' => 'file:./index.js',
+		'editorStyle' => 'file:./index.css',
+		'render' => 'file:./render.php',
+		'style' => 'file:./style-index.css'
+	),
 	'block-games-line' => array(
 		'$schema' => 'https://schemas.wp.org/trunk/block.json',
 		'apiVersion' => 3,
