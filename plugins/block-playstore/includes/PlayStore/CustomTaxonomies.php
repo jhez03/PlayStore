@@ -5,6 +5,7 @@ namespace Playstore;
 if ( ! defined( 'ABSPATH' )) {
 	exit;
 }
+
 class CustomTaxonomies {
 
 	public static function init() {

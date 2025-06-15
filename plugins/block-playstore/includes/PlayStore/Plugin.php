@@ -8,7 +8,6 @@
 
 namespace PlayStore;
 
-use Playstore\CustomTypes;
 
 if ( ! defined( 'ABSPATH' )) {
 	exit;
